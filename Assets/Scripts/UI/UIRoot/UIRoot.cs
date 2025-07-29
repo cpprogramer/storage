@@ -1,0 +1,39 @@
+using Common.UI;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace UI
+{
+    public sealed class UIRoot : MonoBehaviour, IUIRoot
+    {
+        [ SerializeField ] private Canvas _main;
+        [ SerializeField ] private TextMeshProUGUI _text;
+        [ SerializeField ] private Image _imageDebugFrame;
+        
+        
+        IGUILayerHolder _layers;
+        public int InsranceID { get; private set; }
+
+        private void Awake()
+        {
+            _layers = gameObject.GetComponentInChildren<IGUILayerHolder>();
+        }
+        
+        public void Setup( int instanceUid, Rect cameraDataViewPort, bool isDebugMode = false )
+        {
+            InsranceID = instanceUid;
+            _text.text = instanceUid.ToString();
+            var camera = GetComponentInChildren< Camera >();
+            camera.tag = $"Camera_{instanceUid}";
+            camera.rect = cameraDataViewPort;
+            _imageDebugFrame.gameObject.SetActive( isDebugMode );
+        }
+        
+        public void SetParent( Transform child, Common.WindowLayer layerParent )
+        {
+            var parent = _layers.GetLayer( layerParent );
+            child.SetParent( parent, false );
+        }
+    }
+}

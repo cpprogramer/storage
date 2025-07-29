@@ -1,0 +1,277 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dad63eb7c93d47b4f8a7a6d224622732, type: 3}
+  m_Name: TestLevel
+  m_EditorClassIdentifier: 
+  _quadrants:
+  - _planets:
+    - _planetConfig: {fileID: 11400000, guid: a4ffc992e2d3aa844921cd385fa12d7b, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: d70269451853a3849b72d3b1ffd82fe0, type: 2}
+      _races:
+      - _raceConfig: {fileID: 11400000, guid: c31929a1b5ed92e4abc24d82d5b4370a, type: 2}
+      _uid: 0
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: d9f8fbb4b57367f4e9de084ca0741fc9, type: 2}
+        _arguments: 1000
+    - _planetConfig: {fileID: 11400000, guid: 021435c8aa4d5a64f8bdc450ae2863bb, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: d70269451853a3849b72d3b1ffd82fe0, type: 2}
+      _races:
+      - _raceConfig: {fileID: 11400000, guid: e127ecf403daeb442956551700283161, type: 2}
+      _uid: 1
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 1b08fce6c57e01a458af74a647365c7f, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: d70269451853a3849b72d3b1ffd82fe0, type: 2}
+      _races:
+      - _raceConfig: {fileID: 11400000, guid: 52a76f063205f9943ac93c654c2e9202, type: 2}
+      - _raceConfig: {fileID: 11400000, guid: a3bd4c569320b5b419f6c399f4ae8eec, type: 2}
+      _uid: 2
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 93e4c02ec1bbeef4ab92fe3d326aed2f, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: 31d49fef2b42bee479d8d9fe6ac1345c, type: 2}
+      _races: []
+      _uid: 3
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 7384556f61c79854688f9b57dfa08ded, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: d70269451853a3849b72d3b1ffd82fe0, type: 2}
+      _races:
+      - _raceConfig: {fileID: 11400000, guid: c611f73654a5cc843b79eb10139ff2fa, type: 2}
+      _uid: 4
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 6601490bdbee7aa4e979b4b7a8904717, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: 31d49fef2b42bee479d8d9fe6ac1345c, type: 2}
+      _races: []
+      _uid: 5
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: a4ddf92552b2c5c42b18e3b063417e5f, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: d70269451853a3849b72d3b1ffd82fe0, type: 2}
+      _races:
+      - _raceConfig: {fileID: 11400000, guid: d32ef2300fbdc93418748c16ebb84bf0, type: 2}
+      _uid: 6
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 935827d8521a23a4d9625a590e8feb38, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: d70269451853a3849b72d3b1ffd82fe0, type: 2}
+      _races:
+      - _raceConfig: {fileID: 11400000, guid: 5774804c6e2d2694b9939fdeb6171a53, type: 2}
+      - _raceConfig: {fileID: 11400000, guid: bf7693e09c1116d439477c619503d477, type: 2}
+      _uid: 7
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: f948c633dc2c5ff468615a2bb41983fa, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: d70269451853a3849b72d3b1ffd82fe0, type: 2}
+      _races:
+      - _raceConfig: {fileID: 11400000, guid: 5b72865ee2e9d2f49a55cc1b922d55cf, type: 2}
+      - _raceConfig: {fileID: 11400000, guid: 57be3c09a36cace47bad2173139d421d, type: 2}
+      - _raceConfig: {fileID: 11400000, guid: 9f2de86077db1ba4c8667a22081b172a, type: 2}
+      _uid: 8
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: a73676111fde42940a461e4c5b61c1a4, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: 31d49fef2b42bee479d8d9fe6ac1345c, type: 2}
+      _races: []
+      _uid: 9
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: c96162d6d3bc29e439ad507e9be153cc, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: 8ff166778d32586448fa7a3320cc0eda, type: 2}
+      _races: []
+      _uid: 10
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: e73f3abc6e8eedc4fb033fad72fbd453, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: 8ff166778d32586448fa7a3320cc0eda, type: 2}
+      _races: []
+      _uid: 11
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 0da4ecb0f2aa09a42867713168f93208, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: d70269451853a3849b72d3b1ffd82fe0, type: 2}
+      _races:
+      - _raceConfig: {fileID: 11400000, guid: a3bd4c569320b5b419f6c399f4ae8eec, type: 2}
+      - _raceConfig: {fileID: 11400000, guid: a33013b8031afa54ab190486379c59b4, type: 2}
+      _uid: 12
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 68859ad117582f948abb242edc28ba04, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: c1ceaa6e7d8447a4fa72a2d47362e980, type: 2}
+      _races: []
+      _uid: 13
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 5a47c2b9e16f755438aab3beaeb00747, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: 8ff166778d32586448fa7a3320cc0eda, type: 2}
+      _races: []
+      _uid: 14
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 2bb6aca62635fe649a7ce61d02a3fdd5, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: 31d49fef2b42bee479d8d9fe6ac1345c, type: 2}
+      _races: []
+      _uid: 15
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 820cdac5c5fcd9a42ae7d88cb60deb67, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: c1ceaa6e7d8447a4fa72a2d47362e980, type: 2}
+      _races: []
+      _uid: 16
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 1a60c906b3971f846b16f536a5be4bb2, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: 31d49fef2b42bee479d8d9fe6ac1345c, type: 2}
+      _races:
+      - _raceConfig: {fileID: 11400000, guid: 3e4ec71f1d35d3347b5d7d3bac6c4a6e, type: 2}
+      - _raceConfig: {fileID: 11400000, guid: 84d71d2c571d70743a5517c203e10ff8, type: 2}
+      _uid: 17
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 69b834958fd4e3442bf5728024844200, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: c1ceaa6e7d8447a4fa72a2d47362e980, type: 2}
+      _races: []
+      _uid: 18
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 1713fecaef2fba3479cc4226b7725edb, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: c1ceaa6e7d8447a4fa72a2d47362e980, type: 2}
+      _races: []
+      _uid: 19
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 28693f2caf2c5024789589ac5f505ff6, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: d70269451853a3849b72d3b1ffd82fe0, type: 2}
+      _races:
+      - _raceConfig: {fileID: 11400000, guid: 4d042c371b867b0429180b56fcfa5b80, type: 2}
+      - _raceConfig: {fileID: 11400000, guid: 6c96e59ac9d62214eb35cdc74e1666b3, type: 2}
+      - _raceConfig: {fileID: 11400000, guid: 5774804c6e2d2694b9939fdeb6171a53, type: 2}
+      _uid: 20
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 0034934edd406e14f96d9b1e9a7650fd, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: d70269451853a3849b72d3b1ffd82fe0, type: 2}
+      _races:
+      - _raceConfig: {fileID: 11400000, guid: e127ecf403daeb442956551700283161, type: 2}
+      _uid: 21
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 11877b11f38519f4d93dc0c962088137, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: c1ceaa6e7d8447a4fa72a2d47362e980, type: 2}
+      _races: []
+      _uid: 22
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: b80dde745d1e2d444ad573285396b475, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: d70269451853a3849b72d3b1ffd82fe0, type: 2}
+      _races:
+      - _raceConfig: {fileID: 11400000, guid: a3bd4c569320b5b419f6c399f4ae8eec, type: 2}
+      - _raceConfig: {fileID: 11400000, guid: 3f3d5b8c43c314d41ae265c976f891a5, type: 2}
+      - _raceConfig: {fileID: 11400000, guid: e73692834a3765c438644a6c080ba263, type: 2}
+      _uid: 23
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: c0668c7d5b539ed4eb7ef22f9fc517c7, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: 31d49fef2b42bee479d8d9fe6ac1345c, type: 2}
+      _races: []
+      _uid: 24
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: ab5ac49b9b2806f4486faa3b75a8aef8, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: d70269451853a3849b72d3b1ffd82fe0, type: 2}
+      _races:
+      - _raceConfig: {fileID: 11400000, guid: 231720f7d71217546926a7dd31cfa704, type: 2}
+      - _raceConfig: {fileID: 11400000, guid: 50b69363165d3fa43a1944a7077e390e, type: 2}
+      - _raceConfig: {fileID: 11400000, guid: dfd93c7fa2094a94d8f411712cf2ce07, type: 2}
+      _uid: 25
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 82fbe97b980c94747bc892a7e273293d, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: 31d49fef2b42bee479d8d9fe6ac1345c, type: 2}
+      _races: []
+      _uid: 26
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 150ac137f2d1ddc42a24cbd4c7516b6b, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: 8ff166778d32586448fa7a3320cc0eda, type: 2}
+      _races: []
+      _uid: 27
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: cc170d14279e8f04a8402c25b5cb67ee, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: d70269451853a3849b72d3b1ffd82fe0, type: 2}
+      _races:
+      - _raceConfig: {fileID: 11400000, guid: 12e8707ea448a8f42a6600a7fd5614d0, type: 2}
+      - _raceConfig: {fileID: 11400000, guid: 1fcf316229b215049b3545bedd6e5e54, type: 2}
+      - _raceConfig: {fileID: 11400000, guid: 3f3d5b8c43c314d41ae265c976f891a5, type: 2}
+      _uid: 28
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: e901057bee6dab8478fce6266c5db1b2, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: 8ff166778d32586448fa7a3320cc0eda, type: 2}
+      _races: []
+      _uid: 29
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 30136d2193da6ec48a76cab14ea006c6, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: d70269451853a3849b72d3b1ffd82fe0, type: 2}
+      _races:
+      - _raceConfig: {fileID: 11400000, guid: c8ecb5169f0ad2940b52abfe0d287511, type: 2}
+      - _raceConfig: {fileID: 11400000, guid: c8ecb5169f0ad2940b52abfe0d287511, type: 2}
+      _uid: 30
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 38389b91a54c980488b01e9e730f38d9, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: c1ceaa6e7d8447a4fa72a2d47362e980, type: 2}
+      _races: []
+      _uid: 31
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
+    - _planetConfig: {fileID: 11400000, guid: 44384b473eaa14a4bb7412f33f3ae025, type: 2}
+      _planetTypeConfig: {fileID: 11400000, guid: 8ff166778d32586448fa7a3320cc0eda, type: 2}
+      _races: []
+      _uid: 32
+      _commandHandlers:
+      - _commandHandler: {fileID: 11400000, guid: 033f0e2f923ffc042bb0664d19b7f57e, type: 2}
+        _arguments: 
