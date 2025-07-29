@@ -65,7 +65,7 @@ namespace MonopolySpace
             _fsm.RegisterState(typeof(GameFSMObject), model =>
                 new GameFSMObject(_instanceUid, _fsm, _scenesManager, model, _gamePlayConfig, _messageBroker));
             _fsm.RegisterState(typeof(MainMenuFSMObject), model =>
-                new MainMenuFSMObject(_fsm, _startGameService, _multiplayerService, _messageBroker));
+                new MainMenuFSMObject(_fsm, _startGameService, _messageBroker));
             _fsm.RegisterState(typeof(WaitPlayersFSMObject),
                 model => new WaitPlayersFSMObject(_fsm, _multiplayerService));
             _fsm.RegisterState(typeof(LobbyFSMObject),
