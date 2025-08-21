@@ -1,7 +1,7 @@
 using Photon.Client;
 using System.Collections;
 
-namespace MonopolySpace.Net
+namespace StorageTest.Net
 {
     public static class Helpers
     {

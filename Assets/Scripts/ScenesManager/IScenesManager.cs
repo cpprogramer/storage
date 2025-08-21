@@ -1,4 +1,6 @@
+using Cysharp.Threading.Tasks;
 using System;
+using System.Threading;
 using UnityEngine.SceneManagement;
 
 namespace Common
@@ -9,7 +11,7 @@ namespace Common
         event Action< string > OnSceneUnLoaded;
         string CurrentSceneName { get; }
         Scene CurrentLoadedScene { get; }
-        void AddScene( string name );
+        UniTask< Scene > AddSceneAsync( string name, CancellationToken cancellationToken = default );
         void RemoveScene( string name );
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Common.Configs;
 using System;
 
-namespace MonopolySpace.Configs
+namespace StorageTest.Configs
 {
     [ Serializable ]
     public sealed class PlanetConfig : BaseConsumableItemConfig

@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Threading;
 using UnityEngine;
 
-namespace MonopolySpace
+namespace StorageTest
 {
     public sealed class Bootstrapper : MonoBehaviour
     {

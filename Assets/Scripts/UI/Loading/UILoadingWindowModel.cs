@@ -1,9 +1,9 @@
 using Common.UI.Model;
 
-namespace MonopolySpace.UI.Controllers
+namespace StorageTest.UI.Controllers
 {
     public class UILoadingWindowModel : BaseWindowModel
     {
-        public UILoadingWindowModel() : base( typeof(UILoadingController), Consts.UILOADINGVIEW ) {}
+        public UILoadingWindowModel() : base( typeof(UILoadingController), Consts.UI_LOADING_VIEW ) {}
     }
 }

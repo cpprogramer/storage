@@ -2,10 +2,10 @@
 using Common;
 using Common.UI.Messages;
 using Cysharp.Threading.Tasks;
-using MonopolySpace.Lobby;
-using MonopolySpace.Messages;
-using MonopolySpace.Net;
-using MonopolySpace.UI.Controllers;
+using StorageTest.Lobby;
+using StorageTest.Messages;
+using StorageTest.Net;
+using StorageTest.UI.Controllers;
 using UniRx;
 
 namespace FSM
@@ -68,7 +68,7 @@ namespace FSM
                 //_uiManager.ShowWindow( new UIOpenWindowMessage( new UIMessageBoxModel() ) );
                 return;
 
-            _parentFsm.SetState(typeof(LobbyFSMObject));
+            _parentFsm.SetState(typeof(NetLobbyFSMObject));
         }
 
         protected override void OnInitialize()

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MonopolySpace.Net
+namespace StorageTest.Net
 {
     public interface IErrorInfoPhoton
     {

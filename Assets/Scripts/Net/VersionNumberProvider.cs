@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MonopolySpace.Net
+namespace StorageTest.Net
 {
     public sealed class VersionNumberProvider : IVersionNumberProvider
     {

@@ -16,6 +16,7 @@ namespace Common
             where T : Object
         {
             var result = await _resourcesProvider.LoadResourceAsync< T >( name );
+            _cache.Add( name );
             return result;
         }
 

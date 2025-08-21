@@ -1,7 +1,7 @@
 ﻿using Photon.Realtime;
 using System;
 
-namespace MonopolySpace.Net
+namespace StorageTest.Net
 {
     public sealed class ErrorInfoPhoton : IErrorInfoPhoton, IErrorInfoCallback
     {

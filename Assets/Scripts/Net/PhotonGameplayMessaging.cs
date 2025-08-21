@@ -1,7 +1,7 @@
 using Photon.Client;
 using System;
 
-namespace MonopolySpace.Net
+namespace StorageTest.Net
 {
     public sealed class PhotonGameplayMessagingLegacy : IGameplayMessaging
     {

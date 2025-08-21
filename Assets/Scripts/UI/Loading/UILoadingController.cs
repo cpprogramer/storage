@@ -1,8 +1,8 @@
 ﻿using Common.UI;
 using Common.UI.Model;
-using MonopolySpace.UI.View;
+using StorageTest.UI.View;
 
-namespace MonopolySpace.UI.Controllers
+namespace StorageTest.UI.Controllers
 {
     public class UILoadingController : Window< UILoadingView >
     {

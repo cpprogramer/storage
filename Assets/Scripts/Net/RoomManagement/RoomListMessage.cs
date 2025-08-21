@@ -1,9 +1,9 @@
 ﻿using Common.Messages;
-using MonopolySpace.Net;
+using StorageTest.Net;
 
-namespace MonopolySpace.Messages
+namespace StorageTest.Messages
 {
-    public sealed class RoomListMessage : IMessage
+    public readonly struct RoomListMessage : IMessage
     {
         public IRoom[] Rooms { get; }
 

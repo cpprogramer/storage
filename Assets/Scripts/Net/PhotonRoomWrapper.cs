@@ -1,7 +1,7 @@
 using Photon.Realtime;
 using System.Collections;
 
-namespace MonopolySpace.Net
+namespace StorageTest.Net
 {
     public sealed class PhotonRoomWrapper : IRoom
     {

@@ -1,15 +1,18 @@
 ﻿using Common;
 using Common.UI.Model;
-using MonopolySpace.Lobby;
+using StorageTest.Lobby;
 
-namespace MonopolySpace.UI.Controllers
+namespace StorageTest.UI.Controllers
 {
     public class GameWindowModel : BaseWindowModel
     {
-        public IGamePlayManager GamePlayManager { get; }
-
-        public GameWindowModel( IGamePlayManager gamePlayManager, WindowLayer windowLayer = WindowLayer.Windows, int id = 0, bool isModal = false ) : base(
-            typeof(UIGameController), Consts.UIGAMEVIEW, windowLayer, id, isModal ) =>
+        public GameWindowModel(IGamePlayManager gamePlayManager, WindowLayer windowLayer = WindowLayer.Windows,
+            int id = 0, bool isModal = false) : base(
+            typeof(UIGameController), Consts.UI_GAME_VIEW, windowLayer, id, isModal)
+        {
             GamePlayManager = gamePlayManager;
+        }
+
+        public IGamePlayManager GamePlayManager { get; }
     }
 }

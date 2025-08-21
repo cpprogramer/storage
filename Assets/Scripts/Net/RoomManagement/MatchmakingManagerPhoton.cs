@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MonopolySpace.Net
+namespace StorageTest.Net
 {
     public sealed class MatchmakingManagerPhoton : IMatchmakingManager, IMatchmakingCallbacks
     {

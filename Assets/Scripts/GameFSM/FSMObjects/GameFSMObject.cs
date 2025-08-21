@@ -3,9 +3,9 @@ using Common.Models;
 using Common.UI;
 using Configs;
 using Cysharp.Threading.Tasks;
-using MonopolySpace.Lobby;
-using MonopolySpace.Model;
-using MonopolySpace.UI;
+using StorageTest.Lobby;
+using StorageTest.Model;
+using StorageTest.UI;
 using System;
 using UniRx;
 

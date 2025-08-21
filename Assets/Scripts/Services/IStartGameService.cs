@@ -1,4 +1,4 @@
-namespace MonopolySpace.Lobby
+namespace StorageTest.Lobby
 {
     public interface IStartGameService
     {

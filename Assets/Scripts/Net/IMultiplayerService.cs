@@ -1,7 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using System;
 
-namespace MonopolySpace.Net
+namespace StorageTest.Net
 {
     public interface IMultiplayerService : IDisposable
     {

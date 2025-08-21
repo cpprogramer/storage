@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace MonopolySpace.Net
+namespace StorageTest.Net
 {
     public sealed class LobbyManagerPhoton : ILobbyManager, ILobbyCallbacks
     {

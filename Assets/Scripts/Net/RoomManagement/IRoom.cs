@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace MonopolySpace.Net
+namespace StorageTest.Net
 {
     public interface IRoom
     {

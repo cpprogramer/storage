@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 
-namespace MonopolySpace.UI.View
+namespace StorageTest.UI.View
 {
     public sealed class UIMainMenuView : BaseView
     {

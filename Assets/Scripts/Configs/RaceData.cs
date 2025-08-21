@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace MonopolySpace.Configs
+namespace StorageTest.Configs
 {
     [ Serializable ]
     public sealed class RaceData

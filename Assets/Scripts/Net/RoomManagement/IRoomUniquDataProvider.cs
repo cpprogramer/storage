@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace MonopolySpace.Net
+namespace StorageTest.Net
 {
     internal interface IRoomUniquDataProvider
     {

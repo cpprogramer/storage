@@ -3,7 +3,7 @@ using Photon.Realtime;
 using System;
 using UnityEngine;
 
-namespace MonopolySpace.Net
+namespace StorageTest.Net
 {
     public sealed class RoomManagementPhoton : IRoomManagement, IInRoomCallbacks
     {

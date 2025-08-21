@@ -50,6 +50,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bb5f9d5b24dd01c4aa8ac4c71c4594dd
+    m_Address: Assets/Content/Resources_moved/Prefabs/UI/UIHangarView.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bf398d186a0bd344b911a10032cf86e5
     m_Address: UIWaitPlayersView
     m_ReadOnly: 0

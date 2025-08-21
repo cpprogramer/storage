@@ -3,7 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MonopolySpace.UI.View
+namespace StorageTest.UI.View
 {
     public sealed class UILoadingView : BaseView
     {

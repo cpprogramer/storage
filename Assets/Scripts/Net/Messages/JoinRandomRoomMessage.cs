@@ -1,10 +1,10 @@
 using Common.Messages;
 
-namespace MonopolySpace.Messages
+namespace StorageTest.Messages
 {
-    public sealed class JoinRandomRoomMessage : IMessage
+    public readonly struct JoinRandomRoomMessage : IMessage
     {
-        public int MaxCountPlayer { get; }
+        public readonly int MaxCountPlayer;
         public JoinRandomRoomMessage( int maxCountPlayer ) => MaxCountPlayer = maxCountPlayer;
     }
 }

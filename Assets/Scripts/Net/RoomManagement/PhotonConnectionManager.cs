@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MonopolySpace.Net
+namespace StorageTest.Net
 {
     public static class PhotonExtension
     {

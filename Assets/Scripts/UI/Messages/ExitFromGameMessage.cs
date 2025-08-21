@@ -1,8 +1,8 @@
 ﻿using Common.Messages;
 
-namespace MonopolySpace.UI
+namespace StorageTest.UI
 {
-    public sealed class ExitFromGameMessage : IMessage
+    public readonly struct ExitFromGameMessage : IMessage
     {
     }
 }

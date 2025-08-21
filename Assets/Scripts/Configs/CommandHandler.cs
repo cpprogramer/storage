@@ -4,7 +4,7 @@ using Configs;
 using System;
 using UnityEngine;
 
-namespace MonopolySpace.Configs
+namespace StorageTest.Configs
 {
     public abstract class CommandHandler : ScriptableObject, ICommand
     {

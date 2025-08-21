@@ -2,7 +2,7 @@ using Common;
 using FSM;
 using System;
 
-namespace MonopolySpace.Lobby
+namespace StorageTest.Lobby
 {
     public sealed class StartGameService : IStartGameService
     {

@@ -1,10 +1,10 @@
-using MonopolySpace.Net;
 using System;
+using StorageTest.Net;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MonopolySpace.UI
+namespace StorageTest.UI
 {
     public class UIRoomInfo : MonoBehaviour
     {

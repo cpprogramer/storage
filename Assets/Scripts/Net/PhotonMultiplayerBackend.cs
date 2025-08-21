@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 
-namespace MonopolySpace.Net
+namespace StorageTest.Net
 {
     public sealed class PhotonMultiplayerBackend : IMultiplayerBackend
     {

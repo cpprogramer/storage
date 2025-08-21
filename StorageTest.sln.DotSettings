@@ -1,0 +1,385 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeEditing/Unity/AdditionalFileLayout/Pattern/@EntryValue">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;Patterns xmlns="urn:schemas-jetbrains-com:member-reordering-patterns"&gt;
+    
+&lt;/Patterns&gt;</s:String>
+	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpCodeStyle/CONSTRUCTOR_OR_DESTRUCTOR_BODY/@EntryValue">ExpressionBody</s:String>
+	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpCodeStyle/METHOD_OR_OPERATOR_BODY/@EntryValue">ExpressionBody</s:String>
+	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpCodeStyle/NAMESPACE_BODY/@EntryValue">BlockScoped</s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpCodeStyle/USE_HEURISTICS_FOR_BODY_STYLE/@EntryValue">False</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/ALIGN_MULTILINE_PARAMETER/@EntryValue">True</s:Boolean>
+	<s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/BLANK_LINES_AROUND_AUTO_PROPERTY/@EntryValue">0</s:Int64>
+	<s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/BLANK_LINES_AROUND_FIELD/@EntryValue">0</s:Int64>
+	<s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/BLANK_LINES_AROUND_PROPERTY/@EntryValue">0</s:Int64>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/INDENT_NESTED_FIXED_STMT/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/INDENT_NESTED_FOR_STMT/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/INDENT_NESTED_FOREACH_STMT/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/INDENT_NESTED_LOCK_STMT/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/INDENT_NESTED_USINGS_STMT/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/INDENT_NESTED_WHILE_STMT/@EntryValue">True</s:Boolean>
+	<s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/KEEP_BLANK_LINES_IN_CODE/@EntryValue">1</s:Int64>
+	<s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/KEEP_BLANK_LINES_IN_DECLARATIONS/@EntryValue">1</s:Int64>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/KEEP_EXISTING_ENUM_ARRANGEMENT/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/KEEP_EXISTING_EXPR_MEMBER_ARRANGEMENT/@EntryValue">False</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/KEEP_EXISTING_INITIALIZER_ARRANGEMENT/@EntryValue">False</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/KEEP_EXISTING_SWITCH_EXPRESSION_ARRANGEMENT/@EntryValue">False</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/KEEP_USER_LINEBREAKS/@EntryValue">False</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/PLACE_METHOD_ATTRIBUTE_ON_SAME_LINE_EX/@EntryValue">IF_OWNER_IS_SINGLE_LINE</s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/PLACE_SIMPLE_METHOD_ON_SINGLE_LINE/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/PLACE_TYPE_ATTRIBUTE_ON_SAME_LINE_EX/@EntryValue">IF_OWNER_IS_SINGLE_LINE</s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_BETWEEN_ATTRIBUTE_SECTIONS/@EntryValue">False</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_WITHIN_ARRAY_ACCESS_BRACKETS/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_WITHIN_ATTRIBUTE_BRACKETS/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_WITHIN_CATCH_PARENTHESES/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_WITHIN_FOR_PARENTHESES/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_WITHIN_FOREACH_PARENTHESES/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_WITHIN_IF_PARENTHESES/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_WITHIN_LIST_PATTERN_BRACKETS/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_WITHIN_METHOD_CALL_PARENTHESES/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_WITHIN_METHOD_PARENTHESES/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_WITHIN_NEW_PARENTHESES/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_WITHIN_PARENTHESES/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_WITHIN_SWITCH_PARENTHESES/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_WITHIN_TYPE_ARGUMENT_ANGLES/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_WITHIN_TYPE_PARAMETER_ANGLES/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_WITHIN_USING_PARENTHESES/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_WITHIN_WHILE_PARENTHESES/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_WITHING_EMPTY_BRACES/@EntryValue">False</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/STICK_COMMENT/@EntryValue">False</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/WRAP_AFTER_DECLARATION_LPAR/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/WRAP_BEFORE_DECLARATION_RPAR/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/WRAP_BEFORE_FIRST_TYPE_PARAMETER_CONSTRAINT/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/WRAP_MULTIPLE_TYPE_PARAMEER_CONSTRAINTS_STYLE/@EntryValue">CHOP_ALWAYS</s:String>
+	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/WRAP_PARAMETERS_STYLE/@EntryValue">CHOP_IF_LONG</s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/UnityCSharpFormatting/ENFORCE_CUSTOM_HEADER_FORMATTING/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/CSharpFileLayoutPatterns/Pattern/@EntryValue">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;Patterns xmlns="urn:schemas-jetbrains-com:member-reordering-patterns"
+          xmlns:unity="urn:schemas-jetbrains-com:member-reordering-patterns-unity"&gt;
+  &lt;TypePattern DisplayName="Azure"&gt;
+    &lt;Group DisplayName="Fields and Properties"&gt;
+      &lt;Entry DisplayName="Constants"&gt;
+        &lt;Entry.Match&gt;
+          &lt;Kind Is="Constant" /&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Public Delegates and Events" Priority="100"&gt;
+        &lt;Entry.Match&gt;
+          &lt;Or&gt;
+            &lt;And&gt;
+              &lt;Kind Is="Delegate" /&gt;
+              &lt;Access Is="Public" /&gt;
+            &lt;/And&gt;
+            &lt;And&gt;
+              &lt;Access Is="Public" /&gt;
+              &lt;Kind Is="Event" /&gt;
+            &lt;/And&gt;
+          &lt;/Or&gt;
+        &lt;/Entry.Match&gt;
+        &lt;Entry.SortBy&gt;
+          &lt;Name /&gt;
+        &lt;/Entry.SortBy&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Public Serialized Property"&gt;
+        &lt;Entry.Match&gt;
+          &lt;And&gt;
+            &lt;Access Is="Public" /&gt;
+            &lt;Kind Is="Property" /&gt;
+            &lt;HasAttribute Name="field: SerializeField" /&gt;
+          &lt;/And&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Private Serialized Field"&gt;
+        &lt;Entry.Match&gt;
+          &lt;And&gt;
+            &lt;Access Is="Private" /&gt;
+            &lt;Kind Is="Field" /&gt;
+            &lt;HasAttribute Name="SerializeField" /&gt;
+          &lt;/And&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Public Field"&gt;
+        &lt;Entry.Match&gt;
+          &lt;And&gt;
+            &lt;Access Is="Public" /&gt;
+            &lt;Kind Is="Field" /&gt;
+          &lt;/And&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Public Property"&gt;
+        &lt;Entry.Match&gt;
+          &lt;And&gt;
+            &lt;Access Is="Public" /&gt;
+            &lt;Or&gt;
+              &lt;Kind Is="Property" /&gt;
+              &lt;Kind Is="Autoproperty" /&gt;
+            &lt;/Or&gt;
+          &lt;/And&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Protected Field"&gt;
+        &lt;Entry.Match&gt;
+          &lt;And&gt;
+            &lt;Access Is="Protected" /&gt;
+            &lt;Kind Is="Field" /&gt;
+          &lt;/And&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Protected Property"&gt;
+        &lt;Entry.Match&gt;
+          &lt;And&gt;
+            &lt;Access Is="Protected" /&gt;
+            &lt;Or&gt;
+              &lt;Kind Is="Property" /&gt;
+              &lt;Kind Is="Autoproperty" /&gt;
+            &lt;/Or&gt;
+          &lt;/And&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Private Field"&gt;
+        &lt;Entry.Match&gt;
+          &lt;And&gt;
+            &lt;Access Is="Private" /&gt;
+            &lt;Kind Is="Field" /&gt;
+          &lt;/And&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Private Property"&gt;
+        &lt;Entry.Match&gt;
+          &lt;And&gt;
+            &lt;Access Is="Private" /&gt;
+            &lt;Or&gt;
+              &lt;Kind Is="Property" /&gt;
+              &lt;Kind Is="Autoproperty" /&gt;
+            &lt;/Or&gt;
+          &lt;/And&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Private RO"&gt;
+        &lt;Entry.Match&gt;
+          &lt;And&gt;
+            &lt;Access Is="Private" /&gt;
+            &lt;Readonly /&gt;
+          &lt;/And&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Static Private RO"&gt;
+        &lt;Entry.Match&gt;
+          &lt;And&gt;
+            &lt;Access Is="Private" /&gt;
+            &lt;Readonly /&gt;
+            &lt;Static /&gt;
+          &lt;/And&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+    &lt;/Group&gt;
+    &lt;Group DisplayName="Methods"&gt;
+      &lt;Entry DisplayName="Constructor"&gt;
+        &lt;Entry.Match&gt;
+          &lt;Kind Is="Constructor" /&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Destructor"&gt;
+        &lt;Entry.Match&gt;
+          &lt;Kind Is="Destructor" /&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Public Methods Inline"&gt;
+        &lt;Entry.Match&gt;
+          &lt;And&gt;
+            &lt;Access Is="Public" /&gt;
+            &lt;Kind Is="Method" /&gt;
+            &lt;Body Type="Expression" /&gt;
+          &lt;/And&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Public Methods Body"&gt;
+        &lt;Entry.Match&gt;
+          &lt;And&gt;
+            &lt;Access Is="Public" /&gt;
+            &lt;Kind Is="Method" /&gt;
+            &lt;Body Type="Block" /&gt;
+          &lt;/And&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Protected Abstract Methods"&gt;
+        &lt;Entry.Match&gt;
+          &lt;And&gt;
+            &lt;Access Is="Protected" /&gt;
+            &lt;Kind Is="Method" /&gt;
+            &lt;Abstract /&gt;
+          &lt;/And&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Protected Virtual Methods"&gt;
+        &lt;Entry.Match&gt;
+          &lt;And&gt;
+            &lt;Access Is="Protected" /&gt;
+            &lt;Kind Is="Method" /&gt;
+            &lt;Virtual /&gt;
+          &lt;/And&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Protected Methods"&gt;
+        &lt;Entry.Match&gt;
+          &lt;And&gt;
+            &lt;Access Is="Protected" /&gt;
+            &lt;Kind Is="Method" /&gt;
+          &lt;/And&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Private Unity Methods Inline"&gt;
+        &lt;Entry.Match&gt;
+          &lt;And&gt;
+            &lt;unity:EventFunction /&gt;  
+            &lt;Access Is="Private" /&gt;
+            &lt;Kind Is="Method" /&gt;
+            &lt;Body Type="Expression" /&gt;
+          &lt;/And&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Private Unity Methods Body"&gt;
+        &lt;Entry.Match&gt;
+          &lt;And&gt;
+            &lt;unity:EventFunction /&gt;
+            &lt;Access Is="Private" /&gt;
+            &lt;Kind Is="Method" /&gt;
+            &lt;Body Type="Block" /&gt;
+          &lt;/And&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Private Methods Inline"&gt;
+        &lt;Entry.Match&gt;
+          &lt;And&gt;
+            &lt;Access Is="Private" /&gt;
+            &lt;Kind Is="Method" /&gt;
+            &lt;Body Type="Expression" /&gt;
+          &lt;/And&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Private Methods Body"&gt;
+        &lt;Entry.Match&gt;
+          &lt;And&gt;
+            &lt;Access Is="Private" /&gt;
+            &lt;Kind Is="Method" /&gt;
+            &lt;Body Type="Block" /&gt;
+          &lt;/And&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+      &lt;Entry DisplayName="Handler Inline"&gt;
+        &lt;Entry.Match&gt;
+          &lt;HandlesEvent /&gt;
+        &lt;/Entry.Match&gt;
+      &lt;/Entry&gt;
+    &lt;/Group&gt;
+  &lt;/TypePattern&gt;
+  &lt;TypePattern DisplayName="Non-reorderable types"&gt;
+    &lt;TypePattern.Match&gt;
+      &lt;Or&gt;
+        &lt;And&gt;
+          &lt;Kind Is="Interface" /&gt;
+          &lt;Or&gt;
+            &lt;HasAttribute Name="System.Runtime.InteropServices.InterfaceTypeAttribute" /&gt;
+            &lt;HasAttribute Name="System.Runtime.InteropServices.ComImport" /&gt;
+          &lt;/Or&gt;
+        &lt;/And&gt;
+        &lt;Kind Is="Struct" /&gt;
+        &lt;HasAttribute Name="JetBrains.Annotations.NoReorderAttribute" /&gt;
+        &lt;HasAttribute Name="JetBrains.Annotations.NoReorder" /&gt;
+      &lt;/Or&gt;
+    &lt;/TypePattern.Match&gt;
+  &lt;/TypePattern&gt;
+  &lt;TypePattern DisplayName="xUnit.net Test Classes" RemoveRegions="All"&gt;
+    &lt;TypePattern.Match&gt;
+      &lt;And&gt;
+        &lt;Kind Is="Class" /&gt;
+        &lt;HasMember&gt;
+          &lt;And&gt;
+            &lt;Kind Is="Method" /&gt;
+            &lt;HasAttribute Name="Xunit.FactAttribute" Inherited="True" /&gt;
+            &lt;HasAttribute Name="Xunit.TheoryAttribute" Inherited="True" /&gt;
+          &lt;/And&gt;
+        &lt;/HasMember&gt;
+      &lt;/And&gt;
+    &lt;/TypePattern.Match&gt;
+    &lt;Entry DisplayName="Setup/Teardown Methods"&gt;
+      &lt;Entry.Match&gt;
+        &lt;Or&gt;
+          &lt;Kind Is="Constructor" /&gt;
+          &lt;And&gt;
+            &lt;Kind Is="Method" /&gt;
+            &lt;ImplementsInterface Name="System.IDisposable" /&gt;
+          &lt;/And&gt;
+        &lt;/Or&gt;
+      &lt;/Entry.Match&gt;
+      &lt;Entry.SortBy&gt;
+        &lt;Kind Order="Constructor" /&gt;
+      &lt;/Entry.SortBy&gt;
+    &lt;/Entry&gt;
+    &lt;Entry DisplayName="All other members" /&gt;
+    &lt;Entry DisplayName="Test Methods" Priority="100"&gt;
+      &lt;Entry.Match&gt;
+        &lt;And&gt;
+          &lt;Kind Is="Method" /&gt;
+          &lt;HasAttribute Name="Xunit.FactAttribute" /&gt;
+          &lt;HasAttribute Name="Xunit.TheoryAttribute" /&gt;
+        &lt;/And&gt;
+      &lt;/Entry.Match&gt;
+      &lt;Entry.SortBy&gt;
+        &lt;Name /&gt;
+      &lt;/Entry.SortBy&gt;
+    &lt;/Entry&gt;
+  &lt;/TypePattern&gt;
+  &lt;TypePattern DisplayName="NUnit Test Fixtures" RemoveRegions="All"&gt;
+    &lt;TypePattern.Match&gt;
+      &lt;And&gt;
+        &lt;Kind Is="Class" /&gt;
+        &lt;Or&gt;
+          &lt;HasAttribute Name="NUnit.Framework.TestFixtureAttribute" Inherited="True" /&gt;
+          &lt;HasAttribute Name="NUnit.Framework.TestFixtureSourceAttribute" Inherited="True" /&gt;
+          &lt;HasMember&gt;
+            &lt;And&gt;
+              &lt;Kind Is="Method" /&gt;
+              &lt;HasAttribute Name="NUnit.Framework.TestAttribute" /&gt;
+              &lt;HasAttribute Name="NUnit.Framework.TestCaseAttribute" /&gt;
+              &lt;HasAttribute Name="NUnit.Framework.TestCaseSourceAttribute" /&gt;
+            &lt;/And&gt;
+          &lt;/HasMember&gt;
+        &lt;/Or&gt;
+      &lt;/And&gt;
+    &lt;/TypePattern.Match&gt;
+    &lt;Entry DisplayName="Setup/Teardown Methods"&gt;
+      &lt;Entry.Match&gt;
+        &lt;And&gt;
+          &lt;Kind Is="Method" /&gt;
+          &lt;Or&gt;
+            &lt;HasAttribute Name="NUnit.Framework.SetUpAttribute" Inherited="True" /&gt;
+            &lt;HasAttribute Name="NUnit.Framework.TearDownAttribute" Inherited="True" /&gt;
+            &lt;HasAttribute Name="NUnit.Framework.TestFixtureSetUpAttribute" Inherited="True" /&gt;
+            &lt;HasAttribute Name="NUnit.Framework.TestFixtureTearDownAttribute" Inherited="True" /&gt;
+            &lt;HasAttribute Name="NUnit.Framework.OneTimeSetUpAttribute" Inherited="True" /&gt;
+            &lt;HasAttribute Name="NUnit.Framework.OneTimeTearDownAttribute" Inherited="True" /&gt;
+          &lt;/Or&gt;
+        &lt;/And&gt;
+      &lt;/Entry.Match&gt;
+    &lt;/Entry&gt;
+    &lt;Entry DisplayName="All other members" /&gt;
+    &lt;Entry DisplayName="Test Methods" Priority="100"&gt;
+      &lt;Entry.Match&gt;
+        &lt;And&gt;
+          &lt;Kind Is="Method" /&gt;
+          &lt;HasAttribute Name="NUnit.Framework.TestAttribute" /&gt;
+          &lt;HasAttribute Name="NUnit.Framework.TestCaseAttribute" /&gt;
+          &lt;HasAttribute Name="NUnit.Framework.TestCaseSourceAttribute" /&gt;
+        &lt;/And&gt;
+      &lt;/Entry.Match&gt;
+      &lt;Entry.SortBy&gt;
+        &lt;Name /&gt;
+      &lt;/Entry.SortBy&gt;
+    &lt;/Entry&gt;
+  &lt;/TypePattern&gt;
+&lt;/Patterns&gt;</s:String>
+	<s:Boolean x:Key="/Default/CodeStyle/CSharpUsing/CanUseGlobalAlias/@EntryValue">False</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeStyle/CSharpUsing/SortUsingsWithSystemFirst/@EntryValue">False</s:Boolean>
+	<s:String x:Key="/Default/CodeStyle/CSharpVarKeywordUsage/ForBuiltInTypes/@EntryValue">UseVarWhenEvident</s:String>
+	<s:String x:Key="/Default/CodeStyle/CSharpVarKeywordUsage/ForOtherTypes/@EntryValue">UseVarWhenEvident</s:String>
+	<s:String x:Key="/Default/CodeStyle/CSharpVarKeywordUsage/ForSimpleTypes/@EntryValue">UseVarWhenEvident</s:String></wpf:ResourceDictionary>

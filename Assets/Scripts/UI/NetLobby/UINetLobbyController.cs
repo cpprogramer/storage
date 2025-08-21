@@ -1,13 +1,13 @@
 ﻿using Common.UI;
 using Common.UI.Messages;
 using Common.UI.Model;
-using MonopolySpace.Net;
-using MonopolySpace.UI.View;
 using System;
 using System.Threading;
+using StorageTest.Net;
+using StorageTest.UI.View;
 using UniRx;
 
-namespace MonopolySpace.UI.Controllers
+namespace StorageTest.UI.Controllers
 {
     public sealed class UINetLobbyController : Window< UINetLobbyView >
     {

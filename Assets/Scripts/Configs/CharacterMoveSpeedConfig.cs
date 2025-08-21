@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MonopolySpace.Configs
+namespace StorageTest.Configs
 {
     public sealed class CharacterMoveSpeedConfig : ScriptableObject
     {

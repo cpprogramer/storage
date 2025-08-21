@@ -2,9 +2,9 @@
 
 namespace Common.Messages
 {
-    public sealed class UpdateConsumablesMessage : IMessage
+    public readonly struct UpdateConsumablesMessage : IMessage
     {
-        public IEnumerable< (string Key, int ValueCurrent, int ValuePrev) > ConsumableData { get; }
+        public readonly IEnumerable< (string Key, int ValueCurrent, int ValuePrev) > ConsumableData;
 
         public UpdateConsumablesMessage(
             IEnumerable< (string Key, int ValueCurrent, int ValuePrev) > consumableData

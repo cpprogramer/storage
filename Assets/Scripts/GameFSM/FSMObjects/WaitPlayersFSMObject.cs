@@ -2,8 +2,8 @@
 using Common.UI;
 using Common.UI.Messages;
 using Cysharp.Threading.Tasks;
-using MonopolySpace.Net;
-using MonopolySpace.UI.Controllers;
+using StorageTest.Net;
+using StorageTest.UI.Controllers;
 using System;
 
 namespace FSM

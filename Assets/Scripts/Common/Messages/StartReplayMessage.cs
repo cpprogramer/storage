@@ -1,8 +1,8 @@
 ﻿namespace Common.Messages
 {
-    public sealed class StartReplayMessage : IMessage
+    public readonly struct StartReplayMessage : IMessage
     {
-        public string FileName { get; }
+        public readonly string FileName;
 
         public StartReplayMessage( string fileName ) => FileName = fileName;
     }

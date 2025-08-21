@@ -1,8 +1,8 @@
 ﻿using Common.Messages;
 
-namespace MonopolySpace.Messages
+namespace StorageTest.Messages
 {
-    public sealed class LeaveRoomMessage : IMessage
+    public readonly struct LeaveRoomMessage : IMessage
     {
     }
 }

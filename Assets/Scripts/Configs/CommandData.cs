@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace MonopolySpace.Configs
+namespace StorageTest.Configs
 {
     [ Serializable ]
     public sealed class CommandData

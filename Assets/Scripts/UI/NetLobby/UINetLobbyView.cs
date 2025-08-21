@@ -1,12 +1,12 @@
 ﻿using Common;
-using MonopolySpace.Net;
 using System;
 using System.Diagnostics;
+using StorageTest.Net;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 
-namespace MonopolySpace.UI.View
+namespace StorageTest.UI.View
 {
     public sealed class UINetLobbyView : BaseView
     {

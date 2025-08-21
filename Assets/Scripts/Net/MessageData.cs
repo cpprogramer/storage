@@ -1,4 +1,4 @@
-namespace MonopolySpace.Net
+namespace StorageTest.Net
 {
     public readonly struct MessageData
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace MonopolySpace.Model
+namespace StorageTest.Model
 {
     public sealed class RoomData
     {

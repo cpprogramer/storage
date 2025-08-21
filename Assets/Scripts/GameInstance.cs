@@ -1,7 +1,7 @@
 ﻿using Common;
 using UnityEngine;
 
-namespace MonopolySpace
+namespace StorageTest
 {
     public interface IParentHolder
     {

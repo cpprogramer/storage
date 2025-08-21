@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using UniRx;
 
-namespace MonopolySpace.Profile
+namespace StorageTest.Profile
 {
     [ Serializable ]
     public sealed class UserProfile : IUserProfile

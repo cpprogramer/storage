@@ -1,6 +1,6 @@
 using Common.Models;
 
-namespace MonopolySpace.Lobby
+namespace StorageTest.Lobby
 {
     public sealed class StartGameModel : IBaseModel
     {

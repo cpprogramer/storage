@@ -2,8 +2,9 @@ using System;
 using Common;
 using Common.UI;
 using Common.UI.Messages;
-using MonopolySpace.Lobby;
-using MonopolySpace.UI.Controllers;
+using StorageTest.Lobby;
+using StorageTest.Messages;
+using StorageTest.UI.Controllers;
 using UniRx;
 
 namespace FSM
@@ -27,13 +28,19 @@ namespace FSM
         public override void Dispose()
         {
             _compositeDisposable.Dispose();
-            _messageBroker.Publish( new UICloseWindowMessage( typeof(UIMainMenuController), WindowResult.Back ) );
+            _messageBroker.Publish(new UICloseWindowMessage(typeof(UIMainMenuController), WindowResult.Back));
         }
 
         protected override void OnInitialize()
         {
             _compositeDisposable = new CompositeDisposable();
             _messageBroker.Publish(new UIOpenWindowMessage(new UIMainMenuModel()));
+            _messageBroker.Receive<GotoHangarMessage>().Subscribe(GotoHangarMessageHandler);
+        }
+
+        private void GotoHangarMessageHandler(GotoHangarMessage msg)
+        {
+            _parentFsm.SetState(typeof(HangarFSMObject));
         }
     }
 }
