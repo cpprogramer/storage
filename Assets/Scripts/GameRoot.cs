@@ -73,7 +73,7 @@ namespace StorageTest
             _fsm.RegisterState( typeof(LoadingFSMObject), _ => new LoadingFSMObject( _fsm, _messageBroker ) );
 
             _fsm.RegisterState( typeof(HangarFSMObject),
-                _ => new HangarFSMObject( _fsm, _uiRootAggregator, _scenesManager ) );
+                _ => new HangarFSMObject( _fsm, _messageBroker, _scenesManager, _instanceUid ) );
 
             _startGameService = new StartGameService( _fsm );
 

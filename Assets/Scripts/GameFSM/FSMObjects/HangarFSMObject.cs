@@ -9,34 +9,25 @@ namespace FSM
     public sealed class HangarFSMObject : BaseFiniteStateMachineObject
     {
         private readonly IMessageBroker _messageBroker;
-        private readonly IScenesManager _scenesManager;
-        private Hangar _hangar;
-        private HangarView _hangarView;
-        private int _instanceId;
+        private readonly HangarGamePlayManager _hangarGamePlayManager;
 
         public HangarFSMObject(
             IFSM parentFsm,
             IMessageBroker messageBroker,
-            int instanceId,
-            IScenesManager scenesManager
+            IScenesManager scenesManager,
+            int instanceId
         ) : base( parentFsm )
         {
             _messageBroker = messageBroker ?? throw new ArgumentNullException( nameof(messageBroker) );
-            _scenesManager = scenesManager ?? throw new ArgumentNullException( nameof(scenesManager) );
-            _instanceId = instanceId;
+            _hangarGamePlayManager = new HangarGamePlayManager( scenesManager, instanceId );
         }
 
         public override void Dispose() {}
 
-        protected override void OnStart() => CreateAndStart().Forget();
-
-        private async UniTaskVoid CreateAndStart()
+        protected override void OnStart()
         {
-            _hangar = new Hangar();
-            _hangar.Initialize();
-            _hangarView = new HangarView( _hangar, _scenesManager, _instanceId );
-            await _hangarView.Initialize();
-            _hangar.Start();
+            _hangarGamePlayManager.Start();
         }
+        
     }
 }

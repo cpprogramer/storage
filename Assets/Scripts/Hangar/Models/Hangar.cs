@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 namespace StorageTest.Model
 {
@@ -9,7 +8,6 @@ namespace StorageTest.Model
         
         public void Initialize()
         {
-            
         }
 
         public void Start()
