@@ -11,7 +11,7 @@ namespace StorageTest
         [ SerializeField ]
         private bool _debugPlayerMode;
 
-        private void Start()
+        private async UniTask Start()
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             Application.targetFrameRate = 60;
@@ -21,19 +21,23 @@ namespace StorageTest
             {
                 for ( var i = 1; i <= 4; i++ )
                 {
-                    CreateInstance( i );
+                   var gameInst = CreateInstance( i );
+                   await gameInst.InitializeAsync(i, _debugPlayerMode);
+                   gameInst.Run();
                 }
             }
             else
             {
-                CreateInstance( 0 );
+                var gameInst = CreateInstance( 0 );
+                await gameInst.InitializeAsync(0, _debugPlayerMode);
+                gameInst.Run();
             }
         }
 
-        private void CreateInstance( int id )
+        private GameInstance CreateInstance( int id )
         {
             var go = new GameObject( $"Instance_{id}" );
-            go.AddComponent< GameInstance >().Setup( id, _debugPlayerMode );
+            return go.AddComponent< GameInstance >();//.Setup( id, _debugPlayerMode );
         }
     }
 }

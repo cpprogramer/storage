@@ -4,8 +4,8 @@ namespace Common.UI
 {
     public sealed class UIOpenedWindowMessage
     {
-        public IWindow< Type, WindowResult > Window { get; }
+        public IUIViewModel< Type, WindowResult > IuiViewModel { get; }
 
-        public UIOpenedWindowMessage( IWindow< Type, WindowResult > window ) => Window = window;
+        public UIOpenedWindowMessage( IUIViewModel< Type, WindowResult > iuiViewModel ) => IuiViewModel = iuiViewModel;
     }
 }

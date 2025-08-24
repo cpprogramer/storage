@@ -1,7 +1,9 @@
+using Common.Messages;
+
 namespace Common.UI
 {
     public interface IUserActionsQueue
     {
-        public void AddRequest( IBaseMessage message );
+        public void AddRequest( IMessage message );
     }
 }

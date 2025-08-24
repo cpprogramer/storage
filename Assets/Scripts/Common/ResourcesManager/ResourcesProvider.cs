@@ -10,40 +10,90 @@ namespace Common
 {
     public sealed class ResourcesProvider : IResourcesProvider
     {
-        private readonly Dictionary< string, AsyncOperationHandle > _dicLoadedResources = new();
+        private readonly Dictionary<string, List<AsyncOperationHandle>> _dicLoadedResources = new();
 
-        public async UniTask< T > LoadResourceAsync< T >( string name )
+        //для того чтобы не было случая "конкурентного" обращения к словарю
+        private readonly Stack<string> _stackToRelease = new();
+
+        public ResourcesProvider()
+        {}
+
+        public async UniTask<T> LoadResourceAsync<T>(string name)
             where T : Object
         {
             try
             {
-                var dependenciesAsync = Addressables.DownloadDependenciesAsync( name, true );
-                await dependenciesAsync;
-                
-                AsyncOperationHandle< T > asyncOperation = Addressables.LoadAssetAsync< T >( name );
-                _dicLoadedResources.Add( name, asyncOperation );
-                return await asyncOperation;
+                while (_stackToRelease.Count > 0)
+                {
+                    ReleaseForce(_stackToRelease.Pop());
+                }
+
+                DeleteAllInvalidHandles();
+                return await LoadAndAddHandleToDictionaryAsync();
+
             }
-            catch ( Exception e )
+            catch (Exception e)
             {
-                Debug.LogError( $"Error load name:{name} message:{e.Message}" );
+                Debug.LogError($"[+] Error load name:{name} message:{e.Message}");
             }
 
-            return default;
+            return null;
+
+            async UniTask<T> LoadAndAddHandleToDictionaryAsync()
+            {
+                var isExist = _dicLoadedResources.ContainsKey(name);
+                if (!isExist)
+                {
+                    _dicLoadedResources[name] = new List<AsyncOperationHandle>();
+                }
+                var asyncOperation = Addressables.LoadAssetAsync<T>(name);
+                _dicLoadedResources[name].Add(asyncOperation);
+                return await asyncOperation.ToUniTask();
+            }
         }
 
-        public void Release( string name )
+        public void Release(string name, bool force = false)
         {
-            if ( _dicLoadedResources.Remove( name, out AsyncOperationHandle result ) )
+            if (force)
             {
-                Addressables.Release( result );
+                ReleaseForce(name);
+            }
+            else
+            {
+                _stackToRelease.Push(name);
             }
         }
 
-        public void Dispose()
+        private void ReleaseForce(string name)
         {
-            _dicLoadedResources.ForEach( item=> Addressables.Release( item.Value ));
-            _dicLoadedResources.Clear();
+            if (_dicLoadedResources.TryGetValue(name, out var list))
+            {
+                for (var i = list.Count - 1; i >= 0; --i)
+                {
+                    var handle = list[i];
+                    list.RemoveAt(i);
+                    if (handle.IsValid())
+                    {
+                        Addressables.Release(handle);
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void DeleteAllInvalidHandles()
+        {
+            _dicLoadedResources.ForEach(kv =>
+            {
+                for (var i = kv.Value.Count - 1; i >= 0; --i)
+                {
+                    var handle = kv.Value[i];
+                    if (!handle.IsValid())
+                    {
+                        kv.Value.RemoveAt(i);
+                    }
+                }
+            });
         }
     }
 }

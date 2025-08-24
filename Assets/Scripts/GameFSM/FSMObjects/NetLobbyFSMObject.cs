@@ -29,7 +29,7 @@ namespace FSM
 
         protected override void OnStart()
         {
-            _messageBroker.Publish( new UIOpenWindowMessage( new UINetLobbyModel() ) );
+            _messageBroker.Publish( new UIOpenWindowMessage( new UINetLobbyDTO() ) );
         }
 
         public override void Dispose()

@@ -1,7 +1,10 @@
 ﻿using Common;
 using Common.Profile;
 using Common.UI;
+using Common.UI.Messages;
+using Common.UI.Model;
 using Configs;
+using Cysharp.Threading.Tasks;
 using FSM;
 using GameFSM;
 using StorageTest.Lobby;
@@ -17,7 +20,6 @@ namespace StorageTest
 {
     public sealed class GameRoot
     {
-        public event Action OnInitialized;
         private readonly int _instanceUid;
         private readonly bool _isDebugMode;
         private readonly IParentHolder _parentHolder;
@@ -31,6 +33,7 @@ namespace StorageTest
         private IUiRootAggregator _uiRootAggregator;
         private IUiRootViewModel _uiRootViewModel;
         private IUserProfile _userProfile;
+        private IUiManager< Type, WindowResult > _uiManager;
 
         public GameRoot( int instanceUid, ITickable tickable, IParentHolder parentHolder, bool isDebugMode )
         {
@@ -48,8 +51,10 @@ namespace StorageTest
             _scenesManager = new ScenesManager();
             _gamePlayConfig = Resources.Load< GamePlayConfig >( Consts.PATH_TO_CONFIG );
             _userProfile = new UserProfile( _messageBroker );
-            _uiRootViewModel = new UiRootViewModel( _instanceUid, _isDebugMode, _parentHolder, _messageBroker );
-            _uiRootAggregator = new UiRootAggregator( _instanceUid, _uiRootViewModel, _messageBroker );
+            var uiManager = new UiManager( _messageBroker );
+            _uiManager = uiManager;
+            _uiRootViewModel = new UiRootViewModel( _instanceUid, _isDebugMode, _parentHolder );
+            _uiRootAggregator = new UiRootAggregator( _instanceUid, _uiRootViewModel, _messageBroker, uiManager );
 
             _multiplayerService =
                 new MultiplayerService(
@@ -57,6 +62,14 @@ namespace StorageTest
                     _messageBroker );
 
             _fsm = new GameFsm();
+            _startGameService = new StartGameService( _fsm );
+
+            AddFSM();
+            AddWindows();
+        }
+        
+        private void AddFSM()
+        {
             _fsm.RegisterState( typeof(GameFSMObject),
                 model => new GameFSMObject( _instanceUid, _fsm, _scenesManager, model, _gamePlayConfig,
                     _messageBroker ) );
@@ -74,40 +87,67 @@ namespace StorageTest
 
             _fsm.RegisterState( typeof(HangarFSMObject),
                 _ => new HangarFSMObject( _fsm, _messageBroker, _scenesManager, _instanceUid ) );
-
-            _startGameService = new StartGameService( _fsm );
-
-            AddWindows();
         }
 
-        public void Initialize()
+        public async UniTask InitializeAsync()
         {
-            _uiRootViewModel.OnInitialized += InitializedHandler;
-            _uiRootViewModel.Initialize();
-
-            void InitializedHandler()
-            {
-                _uiRootViewModel.OnInitialized -= InitializedHandler;
-                OnInitialized?.Invoke();
-            }
+            await _uiRootViewModel.InitializeAsync();
         }
 
         private void AddWindows()
         {
-            _uiRootViewModel.RegisterWindow( typeof(UIGameController),
+            _uiManager.RegisterWindow( typeof(UIGameController),
                 () => new UIGameController( _uiRootAggregator, _gamePlayConfig ) );
             
-            _uiRootViewModel.RegisterWindow( typeof(UIMainMenuController),
+            _uiManager.RegisterWindow( typeof(UIMainMenuController),
                 () => new UIMainMenuController( _uiRootAggregator, _userProfile ) );
             
-            _uiRootViewModel.RegisterWindow( typeof(UILoadingController),
+            _uiManager.RegisterWindow( typeof(UILoadingController),
                 () => new UILoadingController( _uiRootAggregator ) );
             
-            _uiRootViewModel.RegisterWindow( typeof(UIHangarController),
+            _uiManager.RegisterWindow( typeof(UIHangarController),
                 () => new UILoadingController( _uiRootAggregator ) );
             
-            _uiRootViewModel.RegisterWindow( typeof(UINetLobbyController),
+            _uiManager.RegisterWindow( typeof(UINetLobbyController),
                 () => new UINetLobbyController( _uiRootAggregator, _multiplayerService ) );
         }
+        
+        #if UNITY_EDITOR
+
+        public void TestFSM()
+        {
+            var types = Utils.GetDerivedTypes( typeof(BaseFiniteStateMachineObject) );
+            
+            types.ForEach(item=>
+            {
+                _fsm.SetState( item );
+            } );
+
+        }
+
+        public void TestUI()
+        {
+            var types = Utils.GetDerivedTypes( typeof(BaseWindowDTO) );
+            
+            types.ForEach(item=>
+            {
+                var dto = Activator.CreateInstance( item );
+                _messageBroker.Publish( new UIOpenWindowMessage(dto as BaseWindowDTO ) );
+            } );
+
+            Debug.LogError( "[+] 1" );
+            Observable.Timer( System.TimeSpan.FromSeconds( 5 ) ).Distinct().Subscribe( _ =>
+            {
+                Debug.LogError( "[+] 2" );
+                
+                types.ForEach(item=>
+                {
+                    var dto = Activator.CreateInstance( item );
+                    _messageBroker.Publish( new UICloseWindowMessage( dto.GetType(), WindowResult.Back ) );
+                } );
+            } );
+        }
+        
+        #endif
     }
 }

@@ -5,7 +5,7 @@ using Moq;
 using NUnit.Framework;
 using System;
 
-public sealed class TestInitialization
+public sealed class TestAllFSM
 {
 
     private GameRoot _gameRoot;
@@ -24,6 +24,7 @@ public sealed class TestInitialization
             _gameRoot.Create();
             await _gameRoot.InitializeAsync();
             _gameRoot.Run();
+            _gameRoot.TestFSM();
         }
         catch ( Exception e )
         {
@@ -31,6 +32,8 @@ public sealed class TestInitialization
             throw;
         }
     }
+
+   
     
     
     // A Test behaves as an ordinary method

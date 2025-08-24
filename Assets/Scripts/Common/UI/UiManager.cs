@@ -1,9 +1,10 @@
+using Common.Messages;
 using Common.UI.Messages;
 using System;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
-using CWindow = Common.UI.IWindow< System.Type, Common.UI.WindowResult >;
+using CWindow = Common.UI.IUIViewModel< System.Type, Common.UI.WindowResult >;
 
 namespace Common.UI
 {
@@ -11,9 +12,7 @@ namespace Common.UI
     {
         private readonly Dictionary< Type, CWindow > _openedWindows = new();
         private readonly Dictionary< Type, Func<CWindow> > _registeredWindows = new();
-        
-        private readonly Queue< IBaseMessage > _queueMessages = new();
-      
+        private readonly Queue< IMessage > _queueMessages = new();
         private readonly IMessageBroker _messageBroker;
         private readonly CompositeDisposable _disposables;
         private CWindow _activeModal;
@@ -23,10 +22,9 @@ namespace Common.UI
             _messageBroker = messageBroker ?? throw new ArgumentNullException( nameof(messageBroker) );
             _disposables = new CompositeDisposable();
             
-            //R3
+            //TODO R3
             Observable.Timer( System.TimeSpan.FromSeconds( 1 ) ).Repeat().Subscribe( _ => { TickHandle(); } )
                 .AddTo( _disposables );
-           
             _messageBroker.Receive< UIOpenWindowMessage >().Subscribe( UIOpenWindowMessageHandler )
                 .AddTo( _disposables );
             _messageBroker.Receive< UICloseWindowMessage >().Subscribe( UICloseWindowMessageHandler )
@@ -40,24 +38,24 @@ namespace Common.UI
         {
             if ( _queueMessages.Count > 0 )
             {
-                IBaseMessage msg = _queueMessages.Dequeue();
+                var msg = _queueMessages.Dequeue();
                 _messageBroker.Publish( msg );
                 _queueMessages.Clear();
             }
         }
 
-        private void ClosingFinishedHandler( CWindow window, WindowResult windowResult )
+        private void ClosingFinishedHandler( CWindow iuiViewModel, WindowResult windowResult )
         {
-            if ( window == null ) return;
+            if ( iuiViewModel == null ) return;
 
-            window.OnClosingFinished -= ClosingFinishedHandler;
+            iuiViewModel.OnClosingFinished -= ClosingFinishedHandler;
             
-            if ( _openedWindows.ContainsKey( window.TypeWindow ) )
+            if ( _openedWindows.ContainsKey( iuiViewModel.TypeWindow ) )
             {
-                _openedWindows.Remove( window.TypeWindow );
+                _openedWindows.Remove( iuiViewModel.TypeWindow );
             }
 
-            if ( window == _activeModal ) _activeModal = null;
+            if ( iuiViewModel == _activeModal ) _activeModal = null;
         }
 
         private void UIOpenWindowMessageHandler(UIOpenWindowMessage msg)
@@ -65,7 +63,7 @@ namespace Common.UI
             ShowWindow(msg);
         }
         
-        public void AddRequest( IBaseMessage message ) => _queueMessages.Enqueue( message );
+        public void AddRequest( IMessage message ) => _queueMessages.Enqueue( message );
 
         public void Dispose()
         {
@@ -83,11 +81,11 @@ namespace Common.UI
 
         private void ShowWindow( UIOpenWindowMessage msg )
         {
-            if ( _openedWindows.ContainsKey( msg.Model.TypeWindow ) ) return;
+            if ( _openedWindows.ContainsKey( msg.Dto.TypeWindow ) ) return;
            
-            var opened = CreateWindowInstance( msg.Model.TypeWindow );
+            var opened = CreateWindowInstance( msg.Dto.TypeWindow );
             opened.OnClosingFinished += ClosingFinishedHandler;
-            opened.Initialize(msg.Model);
+            opened.Initialize(msg.Dto);
             _openedWindows.Add( opened.TypeWindow, opened );
         }
 

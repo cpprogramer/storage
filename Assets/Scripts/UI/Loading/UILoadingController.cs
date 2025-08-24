@@ -4,12 +4,12 @@ using StorageTest.UI.View;
 
 namespace StorageTest.UI.Controllers
 {
-    public class UILoadingController : Window< UILoadingView >
+    public class UILoadingController : UIBaseViewModel< UILoadingView >
     {
         public UILoadingController( IUiRootAggregator uiRootAggregator ) : base( uiRootAggregator )
         {
         }
 
-        protected override void OnInitialize( BaseWindowModel model ) => _baseView.StartAnimation();
+        protected override void OnInitialize( BaseWindowDTO dto ) => _baseView.StartAnimation();
     }
 }

@@ -34,7 +34,7 @@ namespace FSM
         protected override void OnInitialize()
         {
             _compositeDisposable = new CompositeDisposable();
-            _messageBroker.Publish(new UIOpenWindowMessage(new UIMainMenuModel()));
+            _messageBroker.Publish(new UIOpenWindowMessage(new UIMainMenuDTO()));
             _messageBroker.Receive<GotoHangarMessage>().Subscribe(GotoHangarMessageHandler);
         }
 

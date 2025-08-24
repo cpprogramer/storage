@@ -76,7 +76,7 @@ namespace FSM
             _compositeDisposable = new CompositeDisposable();
             _messageBroker.Receive<UIConnectToLobbyMessage>().Subscribe(UIConnectToLobbyMessageHandler)
                 .AddTo(_compositeDisposable);
-            _messageBroker.Publish(new UIOpenWindowMessage(new UIMainMenuModel()));
+            _messageBroker.Publish(new UIOpenWindowMessage(new UIMainMenuDTO()));
         }
     }
 }

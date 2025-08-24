@@ -5,35 +5,23 @@ using Configs;
 
 namespace StorageTest.UI.Controllers
 {
-    public class CustomAttribute : Attribute
-    {
-        public Type AttributeType;
-
-        public CustomAttribute(Type attributeType)
-        {
-            AttributeType = attributeType;
-        }
-    }
-
-    [Custom(typeof(UIGameController))]
-    public class UIGameController : Window<UIGameView>
+    public class UIGameController : UIBaseViewModel<UIGameView>
     {
         private readonly IGamePlayConfig _gamePlayConfig;
-        private GameWindowModel _model;
+        private GameWindowDTO _dto;
 
 
         public UIGameController(
             IUiRootAggregator uiRootAggregator,
-            IGamePlayConfig gamePlayConfig,
-            bool isModal = false
+            IGamePlayConfig gamePlayConfig
         ) : base(uiRootAggregator)
         {
             _gamePlayConfig = gamePlayConfig ?? throw new ArgumentNullException(nameof(gamePlayConfig));
         }
 
-        protected override void OnInitialize(BaseWindowModel model)
+        protected override void OnInitialize(BaseWindowDTO dto)
         {
-            _model = (GameWindowModel)model;
+            _dto = (GameWindowDTO)dto;
             _baseView.OnClose += CloseHandler;
         }
 

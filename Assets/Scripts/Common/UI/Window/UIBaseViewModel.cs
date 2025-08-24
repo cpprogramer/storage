@@ -1,18 +1,19 @@
+using Common.Messages;
 using Common.UI.Model;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Linq;
 using UI;
 using UnityEngine;
-using CWindow = Common.UI.IWindow< System.Type, Common.UI.WindowResult >;
+using UIViewModel = Common.UI.IUIViewModel< System.Type, Common.UI.WindowResult >;
 
 namespace Common.UI
 {
-    public abstract class Window< TView > : CWindow
+    public abstract class UIBaseViewModel< TView > : UIViewModel
         where TView : MonoBehaviour, IBaseView
     {
-        public event Action< CWindow, WindowResult > OnClosingFinished;
-        public event Action< CWindow > OnClosingStarted;
+        public event Action< UIViewModel, WindowResult > OnClosingFinished;
+        public event Action< UIViewModel > OnClosingStarted;
 
         public Type TypeWindow => GetType();
         public string WindowName { get; private set; }
@@ -22,13 +23,13 @@ namespace Common.UI
         protected readonly IUiRootAggregator _uiRootAggregator;
         private readonly IResourcesProvider _resourcesProvider;
 
-        protected Window( IUiRootAggregator uiRootAggregator )
+        protected UIBaseViewModel( IUiRootAggregator uiRootAggregator )
         {
             _uiRootAggregator = uiRootAggregator ?? throw new ArgumentNullException( nameof(uiRootAggregator) );
             _resourcesProvider = new ResourcesProvider();
         }
 
-        protected abstract void OnInitialize( BaseWindowModel model );
+        protected abstract void OnInitialize( BaseWindowDTO dto );
 
         protected virtual void OnClosing()
         {
@@ -49,33 +50,38 @@ namespace Common.UI
             OnClosingFinished?.Invoke( this, result );
         }
 
-        public void Initialize( BaseWindowModel baseModel )
+        public void Initialize( BaseWindowDTO baseDto )
         {
-            WindowName = baseModel.WindowName;
-            InitializeAsync( baseModel ).Forget();
+            WindowName = baseDto.WindowName;
+            InitializeAsync( baseDto ).Forget();
         }
 
-        private async UniTaskVoid InitializeAsync( BaseWindowModel baseModel )
+        protected void AddRequest(IMessage message)
+        {
+            _uiRootAggregator.UserActionsQueue.AddRequest( message );
+        }
+        
+        private async UniTaskVoid InitializeAsync( BaseWindowDTO baseDto )
         {
             try
             {
-                var view = await _resourcesProvider.LoadResourceAsync< GameObject >( baseModel.WindowName );
+                var view = await _resourcesProvider.LoadResourceAsync< GameObject >( baseDto.WindowName );
                 _baseView = Utils.Instantiate( view ).GetComponent< TView >();
                 UIRoot uiRoot = GameObject.FindObjectsByType< UIRoot >( FindObjectsSortMode.None )
                     .FirstOrDefault( item => item.InsranceID == _uiRootAggregator.InstanceID );
 
                 if ( uiRoot != null )
                 {
-                    uiRoot.SetParent( _baseView.transform, baseModel.WindowLayer );
+                    uiRoot.SetParent( _baseView.transform, baseDto.WindowLayer );
                 }
 
                 _baseView.OnStarted += ViewStartedHandler;
 
-                void ViewStartedHandler() => OnInitialize( baseModel );
+                void ViewStartedHandler() => OnInitialize( baseDto );
             }
             catch ( Exception e )
             {
-                Debug.LogError( $"Error! Create View Failed {e.Message}" );
+                Debug.LogError( $"Error! Create View Failed {e.Message} {baseDto.WindowName}" );
             }
         }
     }

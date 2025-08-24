@@ -4,8 +4,8 @@ namespace Common.UI.Messages
 {
     public readonly struct UIOpenWindowMessage
     {
-        public readonly BaseWindowModel Model;
+        public readonly BaseWindowDTO Dto;
 
-        public UIOpenWindowMessage( BaseWindowModel model ) => Model = model;
+        public UIOpenWindowMessage( BaseWindowDTO dto ) => Dto = dto;
     }
 }

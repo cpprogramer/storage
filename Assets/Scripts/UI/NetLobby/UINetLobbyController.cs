@@ -9,9 +9,9 @@ using UniRx;
 
 namespace StorageTest.UI.Controllers
 {
-    public sealed class UINetLobbyController : Window< UINetLobbyView >
+    public sealed class UINetLobbyController : UIBaseViewModel< UINetLobbyView >
     {
-        private UINetLobbyModel _model;
+        private UINetLobbyDTO _dto;
         private readonly IMultiplayerService _multiplayerService;
 
         private CompositeDisposable _compositeDisposable = new();
@@ -24,12 +24,12 @@ namespace StorageTest.UI.Controllers
             _multiplayerService = multiplayerService ?? throw new ArgumentNullException( nameof(multiplayerService) );
         }
 
-        protected override void OnInitialize( BaseWindowModel model )
+        protected override void OnInitialize( BaseWindowDTO dto )
         {
             _isClosed = false;
             _cancellationTokenSource = new CancellationTokenSource();
             _compositeDisposable = new CompositeDisposable();
-            _model = (UINetLobbyModel)model;
+            _dto = (UINetLobbyDTO)dto;
             _baseView.OnExitClicked += ExitClickedHandler;
             _baseView.OnJoinOrCreateRoomClicked += JoinOrCreateRoomClickedHandler;
             _multiplayerService.OnRoomListUpdate += RoomListUpdateHandler;

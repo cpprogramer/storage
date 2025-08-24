@@ -5,7 +5,7 @@ using Moq;
 using NUnit.Framework;
 using System;
 
-public sealed class TestInitialization
+public sealed class TestAllWindows
 {
 
     private GameRoot _gameRoot;
@@ -23,7 +23,7 @@ public sealed class TestInitialization
         {
             _gameRoot.Create();
             await _gameRoot.InitializeAsync();
-            _gameRoot.Run();
+            _gameRoot.TestUI();
         }
         catch ( Exception e )
         {

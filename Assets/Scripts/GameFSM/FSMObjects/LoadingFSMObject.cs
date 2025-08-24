@@ -32,7 +32,7 @@ namespace FSM
 
         private async UniTaskVoid Simulate()
         {
-            _messageBroker.Publish(  new UIOpenWindowMessage( new UILoadingWindowModel()) );
+            _messageBroker.Publish(  new UIOpenWindowMessage( new UILoadingWindowDTO()) );
             await UniTask.Delay( TimeSpan.FromSeconds( WAIT_TIME_IN_SEC ) );
             _parentFsm.SetState( typeof(MainMenuFSMObject), DummyModel.Dummy );
         }

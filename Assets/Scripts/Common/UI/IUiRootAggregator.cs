@@ -6,5 +6,7 @@ namespace Common.UI
     {
         int InstanceID { get; }
         IMessageBroker MessageBroker { get; }
+        
+        IUserActionsQueue UserActionsQueue { get; }
     }
 }

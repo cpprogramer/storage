@@ -7,16 +7,17 @@ using Configs;
 using StorageTest.Messages;
 using StorageTest.UI.View;
 using UniRx;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
 namespace StorageTest.UI.Controllers
 {
-    public sealed class UIMainMenuController : Window<UIMainMenuView>
+    public sealed class UIMainMenuController : UIBaseViewModel<UIMainMenuView>
     {
         private readonly IConsumablesConfig _consumablesConfig;
         private readonly IUserProfile _userProfile;
       
-        private UIMainMenuModel _model;
+        private UIMainMenuDTO _dto;
 
         public UIMainMenuController(IUiRootAggregator uiRootAggregator, IUserProfile userProfile)
             : base(uiRootAggregator)
@@ -25,9 +26,9 @@ namespace StorageTest.UI.Controllers
             _consumablesConfig = Resources.Load<ConsumablesConfig>("Configs/ConsumablesConfig");
         }
 
-        protected override void OnInitialize(BaseWindowModel model)
+        protected override void OnInitialize(BaseWindowDTO dto)
         {
-            _model = (UIMainMenuModel)model;
+            _dto = (UIMainMenuDTO)dto;
             _baseView.OnPlayClicked += PlayClickedHandler;
         }
 
@@ -37,7 +38,7 @@ namespace StorageTest.UI.Controllers
 
         private void PlayClickedHandler()
         {
-            _uiRootAggregator.MessageBroker.Publish(new GotoHangarMessage());
+           AddRequest(new GotoHangarMessage());
         }
     }
 }
