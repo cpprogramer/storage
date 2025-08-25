@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace StorageTest.UI
+namespace UI.NetLobby
 {
     public class UIRoomInfo : MonoBehaviour
     {

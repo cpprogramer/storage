@@ -1,13 +1,13 @@
 using System;
 
-namespace StorageTest.Model
+namespace Hangar.Models
 {
     public sealed class Hangar
     {
         public event Action OnHangarStarted;
 
-        public void Initialize() {}
-
         public void Start() => OnHangarStarted?.Invoke();
+
+        public void Initialize() {}
     }
 }

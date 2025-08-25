@@ -3,11 +3,10 @@ using Common.UI;
 using Common.UI.Model;
 using Configs;
 using StorageTest.Messages;
-using StorageTest.UI.View;
 using System;
 using UnityEngine;
 
-namespace StorageTest.UI.ViewModel
+namespace UI.MainMenu
 {
     public sealed class UIMainMenuViewModel : UIBaseViewModel< UIMainMenuView >
     {

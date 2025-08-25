@@ -35,6 +35,8 @@ namespace Common.UI
 
         public void Dispose() => _disposables.Dispose();
 
+        public void RegisterWindow( Type type, Func< CWindow > func ) => _registeredWindows[ type ] = func;
+
         public bool IsOpened( Func< string, bool > condition )
         {
             foreach ( KeyValuePair< Type, CWindow > kv in _openedWindows )
@@ -44,10 +46,10 @@ namespace Common.UI
             return false;
         }
 
-        public void RegisterWindow( Type type, Func< CWindow > func ) => _registeredWindows[ type ] = func;
-
         private void UICloseWindowMessageHandler( UICloseWindowMessage args ) =>
             CloseWindow( args.WindowType, args.WindowResult );
+
+        private void UIOpenWindowMessageHandler( UIOpenWindowMessage msg ) => ShowWindow( msg );
 
         private void TickHandle()
         {
@@ -70,8 +72,6 @@ namespace Common.UI
 
             if ( iuiViewModel == _activeModal ) _activeModal = null;
         }
-
-        private void UIOpenWindowMessageHandler( UIOpenWindowMessage msg ) => ShowWindow( msg );
 
         private void ShowWindow( UIOpenWindowMessage msg )
         {

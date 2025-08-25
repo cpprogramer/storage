@@ -3,8 +3,8 @@ using Common.UI;
 using Common.UI.Messages;
 using Cysharp.Threading.Tasks;
 using StorageTest.Net;
-using StorageTest.UI.ViewModel;
 using System;
+using UI.NetLobby;
 using UniRx;
 using UnityEngine;
 

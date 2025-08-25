@@ -3,7 +3,7 @@ using StorageTest.Net;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace StorageTest.UI.View
+namespace UI.NetLobby
 {
     public sealed class UIRoomListView : MonoBehaviour
     {
@@ -18,7 +18,7 @@ namespace StorageTest.UI.View
             _roomInfoTemplate.gameObject.SetActive( true );
             rooms.ForEach( item =>
             {
-                UIRoomInfo inst = Instantiate( _roomInfoTemplate );
+                UIRoomInfo inst = Utils.Instantiate( _roomInfoTemplate );
                 inst.transform.SetParent( _parentForRooms, false );
                 inst.Setup( item );
                 _rooms.Add( item.Name, inst );

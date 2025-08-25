@@ -2,7 +2,7 @@ using Common;
 using FSM;
 using System;
 
-namespace StorageTest.Lobby
+namespace Services
 {
     public sealed class StartGameService : IStartGameService
     {

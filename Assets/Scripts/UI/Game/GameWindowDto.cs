@@ -1,6 +1,7 @@
 ﻿using Common.UI.Model;
+using StorageTest;
 
-namespace StorageTest.UI.ViewModel
+namespace UI.Game
 {
     public class GameWindowDTO : BaseWindowDTO
     {

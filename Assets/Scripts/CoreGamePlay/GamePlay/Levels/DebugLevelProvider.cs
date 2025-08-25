@@ -16,7 +16,7 @@ namespace StorageTest.Model
         public async UniTask< ILevelView > GetLevelAsync( Transform parent )
         {
             var level = await _resourcesProvider.LoadResourceAsync< GameObject >( LEVEL_NAME );
-            GameObject levelInst = Object.Instantiate( level );
+            GameObject levelInst = Utils.Instantiate( level );
             var levelView = levelInst.GetComponent< ILevelView >();
             //levelView.Setup(_resourcesProvider, parent);
             //await levelView.CreateView();

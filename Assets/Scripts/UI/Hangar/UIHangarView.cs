@@ -1,6 +1,6 @@
 ﻿using Common;
 
-namespace StorageTest.UI.View
+namespace UI.Hangar
 {
     public sealed class UIHangarView : BaseView
     {

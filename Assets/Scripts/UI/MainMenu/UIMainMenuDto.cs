@@ -1,6 +1,7 @@
 using Common.UI.Model;
+using StorageTest;
 
-namespace StorageTest.UI.ViewModel
+namespace UI.MainMenu
 {
     public sealed class UIMainMenuDTO : BaseWindowDTO
     {

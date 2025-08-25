@@ -24,6 +24,8 @@ namespace Common
 
         public virtual void Show() => gameObject.SetActive( true );
 
+        public void Setup( ITimeline timeline ) => _timeline = timeline;
+
         public void CloseView()
         {
             if ( IsDestroyable )
@@ -31,8 +33,6 @@ namespace Common
             else
                 gameObject.SetActive( false );
         }
-
-        public void Setup( ITimeline timeline ) => _timeline = timeline;
 
         public void ShowCloseButton( bool isShow )
         {

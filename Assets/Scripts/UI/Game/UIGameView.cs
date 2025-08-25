@@ -1,6 +1,6 @@
 ﻿using Common;
 
-namespace StorageTest.UI
+namespace UI.Game
 {
     public sealed class UIGameView : BaseView
     {

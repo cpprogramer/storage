@@ -3,8 +3,8 @@ using Common.UI;
 using Common.UI.Messages;
 using Cysharp.Threading.Tasks;
 using StorageTest.Messages;
-using StorageTest.UI.ViewModel;
 using System;
+using UI.Loading;
 using UniRx;
 
 namespace FSM

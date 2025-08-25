@@ -1,4 +1,4 @@
-namespace StorageTest.Lobby
+namespace Services
 {
     public interface IStartGameService
     {

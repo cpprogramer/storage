@@ -1,6 +1,7 @@
 using Common.Models;
+using StorageTest.Lobby;
 
-namespace StorageTest.Lobby
+namespace Services
 {
     public sealed class StartGameDTO : IBaseDTO
     {

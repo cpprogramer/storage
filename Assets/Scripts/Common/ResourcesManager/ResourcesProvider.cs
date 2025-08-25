@@ -50,6 +50,16 @@ namespace Common
                 _stackToRelease.Push( name );
         }
 
+        private void DeleteAllInvalidHandles() =>
+            _dicLoadedResources.ForEach( kv =>
+            {
+                for ( int i = kv.Value.Count - 1; i >= 0; --i )
+                {
+                    AsyncOperationHandle handle = kv.Value[ i ];
+                    if ( !handle.IsValid() ) kv.Value.RemoveAt( i );
+                }
+            } );
+
         private void ReleaseForce( string name )
         {
             if ( _dicLoadedResources.TryGetValue( name, out List< AsyncOperationHandle > list ) )
@@ -64,15 +74,5 @@ namespace Common
                     }
                 }
         }
-
-        private void DeleteAllInvalidHandles() =>
-            _dicLoadedResources.ForEach( kv =>
-            {
-                for ( int i = kv.Value.Count - 1; i >= 0; --i )
-                {
-                    AsyncOperationHandle handle = kv.Value[ i ];
-                    if ( !handle.IsValid() ) kv.Value.RemoveAt( i );
-                }
-            } );
     }
 }

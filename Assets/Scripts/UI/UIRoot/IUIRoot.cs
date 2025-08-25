@@ -1,10 +1,13 @@
 using Common;
 using UnityEngine;
 
-public interface IUIRoot
+namespace UI.UIRoot
 {
-    int InsranceID { get; }
-    void Setup( int instanceUid, Rect cameraDataViewPort, bool isDebugMode = false );
+    public interface IUIRoot
+    {
+        int InsranceID { get; }
+        void Setup( int instanceUid, Rect cameraDataViewPort, bool isDebugMode = false );
 
-    void SetParent( Transform child, WindowLayer layerParent );
+        void SetParent( Transform child, WindowLayer layerParent );
+    }
 }

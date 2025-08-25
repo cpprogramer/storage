@@ -1,8 +1,7 @@
 ﻿using Common.UI;
 using Common.UI.Model;
-using StorageTest.UI.View;
 
-namespace StorageTest.UI.ViewModel
+namespace UI.Loading
 {
     public class UILoadingViewModel : UIBaseViewModel< UILoadingView >
     {

@@ -3,7 +3,7 @@ using Common.UI.Model;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Linq;
-using UI;
+using UI.UIRoot;
 using UnityEngine;
 using UIViewModel = Common.UI.IUIViewModel< System.Type, Common.UI.WindowResult >;
 
@@ -62,7 +62,17 @@ namespace Common.UI
             {
                 var view = await _resourcesProvider.LoadResourceAsync< GameObject >( baseDto.WindowName );
                 _baseView = Utils.Instantiate( view ).GetComponent< TView >();
-
+                if(_baseView == null)
+                {
+                    throw new Exception($"Instantiate failed - check GameRoot.AddWindow typeof (Type) and SomeViewModel");
+                    //TODO правильно!
+                    //_uiManager.RegisterWindow( typeof(UILoadingViewModel), () => new UILoadingViewModel( _uiRootAggregator ) );
+                    //TODO не правильно!                                                    *|*
+                    //_uiManager.RegisterWindow( typeof(UILoadingViewModel), () => new UIHangarViewModel( _uiRootAggregator ) );
+                    return;
+                }
+                
+                
                 UIRoot uiRoot = GameObject.FindObjectsByType< UIRoot >( FindObjectsSortMode.None )
                     .FirstOrDefault( item => item.InsranceID == _uiRootAggregator.InstanceID );
 

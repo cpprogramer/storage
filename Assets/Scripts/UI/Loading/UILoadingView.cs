@@ -1,6 +1,6 @@
 ﻿using Common;
 
-namespace StorageTest.UI.View
+namespace UI.Loading
 {
     public sealed class UILoadingView : BaseView
     {

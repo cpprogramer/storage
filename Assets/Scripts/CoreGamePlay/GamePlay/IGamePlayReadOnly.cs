@@ -1,4 +1,4 @@
-﻿using StorageTest.Lobby;
+﻿using Services;
 
 namespace StorageTest.Model
 {

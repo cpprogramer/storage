@@ -1,4 +1,5 @@
 using Common.UI.Model;
+using UI.Hangar;
 
 namespace StorageTest.UI.ViewModel
 {

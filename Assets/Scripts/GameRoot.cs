@@ -7,12 +7,16 @@ using Configs;
 using Cysharp.Threading.Tasks;
 using FSM;
 using GameFSM;
-using StorageTest.Lobby;
+using Services;
 using StorageTest.Messages;
 using StorageTest.Net;
 using StorageTest.Profile;
-using StorageTest.UI.ViewModel;
 using System;
+using UI.Game;
+using UI.Hangar;
+using UI.Loading;
+using UI.MainMenu;
+using UI.NetLobby;
 using UniRx;
 using UnityEngine;
 

@@ -2,8 +2,9 @@
 using Common.UI.Model;
 using Configs;
 using System;
+using UI.Messages;
 
-namespace StorageTest.UI.ViewModel
+namespace UI.Game
 {
     public class UIGameViewModel : UIBaseViewModel< UIGameView >
     {

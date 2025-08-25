@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 
-namespace StorageTest.UI.View
+namespace UI.NetLobby
 {
     public sealed class UINetLobbyView : BaseView
     {

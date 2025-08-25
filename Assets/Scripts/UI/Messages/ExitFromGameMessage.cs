@@ -1,6 +1,6 @@
 ﻿using Common.Messages;
 
-namespace StorageTest.UI
+namespace UI.Messages
 {
     public readonly struct ExitFromGameMessage : IMessage
     {

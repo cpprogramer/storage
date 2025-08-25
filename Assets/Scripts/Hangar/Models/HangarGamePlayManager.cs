@@ -1,7 +1,8 @@
 ﻿using Common;
 using Cysharp.Threading.Tasks;
+using StorageTest.Model;
 
-namespace StorageTest.Model
+namespace Hangar.Models
 {
     public sealed class HangarGamePlayManager
     {

@@ -2,12 +2,11 @@
 using Common.UI.Messages;
 using Common.UI.Model;
 using StorageTest.Net;
-using StorageTest.UI.View;
 using System;
 using System.Threading;
 using UniRx;
 
-namespace StorageTest.UI.ViewModel
+namespace UI.NetLobby
 {
     public sealed class UINetLobbyViewModel : UIBaseViewModel< UINetLobbyView >
     {

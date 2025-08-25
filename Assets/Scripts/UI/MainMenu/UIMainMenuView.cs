@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 
-namespace StorageTest.UI.View
+namespace UI.MainMenu
 {
     public sealed class UIMainMenuView : BaseView
     {

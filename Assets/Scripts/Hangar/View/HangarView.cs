@@ -12,14 +12,14 @@ namespace StorageTest.Model
 {
     public sealed class HangarView
     {
-        private readonly Hangar _hangar;
+        private readonly Hangar.Models.Hangar _hangar;
         private readonly IScenesManager _scenesManager;
         private ILevelView _levelView;
         private Camera _camera;
         private readonly CameraConfig _cameraConfig;
         private readonly int _instanceId;
 
-        public HangarView( Hangar hangar, IScenesManager scenesManager, int instanceId )
+        public HangarView( Hangar.Models.Hangar hangar, IScenesManager scenesManager, int instanceId )
         {
             _hangar = hangar ?? throw new ArgumentNullException( nameof(hangar) );
             _scenesManager = scenesManager ?? throw new ArgumentNullException( nameof(scenesManager) );
