@@ -6,6 +6,6 @@ namespace Common.UI
     public enum WindowResult
     {
         Undefined = 0x0,
-        Back = 0x1,
+        Back = 0x1
     }
 }

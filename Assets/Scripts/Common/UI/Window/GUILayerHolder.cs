@@ -5,7 +5,6 @@ namespace Common.UI
 {
     public class GUILayerHolder : MonoBehaviour, IGUILayerHolder
     {
-      
         private readonly Dictionary< WindowLayer, Transform > _layers = new();
 
         public Transform GetLayer( WindowLayer layer )

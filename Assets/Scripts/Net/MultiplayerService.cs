@@ -28,7 +28,7 @@ namespace StorageTest.Net
         public void Dispose() => SubscribeOrUnsubscribe( false );
 
         async UniTask IMultiplayerService.JoinOrCreateRoom() => await _multiplayerBackend.JoinOrCreateRoom();
-        
+
         async UniTask IMultiplayerService.JoinRoom( string roomUid ) => await _multiplayerBackend.JoinRoom( roomUid );
 
         async UniTask IMultiplayerService.JoinLobbyAsync() => await _multiplayerBackend.JoinLobbyAsync();

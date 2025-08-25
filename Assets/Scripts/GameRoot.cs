@@ -122,7 +122,7 @@ namespace StorageTest
                 object dto = Activator.CreateInstance( item );
                 _messageBroker.Publish( new UIOpenWindowMessage( dto as BaseWindowDTO ) );
             } );
-           
+
             Observable.Timer( TimeSpan.FromSeconds( 5 ) ).Distinct().Subscribe( _ =>
             {
                 types.ForEach( item =>

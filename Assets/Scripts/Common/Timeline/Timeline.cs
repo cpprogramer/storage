@@ -1,4 +1,3 @@
-using Common;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,22 +11,10 @@ namespace Assets.Scripts.Timeline
         private readonly List< ITimelineData > _animationsList = new();
 
         public float GetCurrentTime() => Time.time;
-        
+
         public void Add( ITimelineData data ) => _animationsList.Add( data );
 
-        public Timeline( )
-        {
-           // Observable.Timer (System.TimeSpan.FromSeconds (1)) // создаем timer Observable
-           //     .Repeat () // делает таймер циклическим
-           //     .Subscribe (_ => { // подписываемся
-           //         Debug.Log ("каждую 1 секунду");
-           //     }).AddTo (disposables); // при
-        }
-        
-        public void Dispose()
-        {
-            _animationsList.Clear();
-        }
+        public void Dispose() => _animationsList.Clear();
 
         public float GetLastTweenEndTime()
         {

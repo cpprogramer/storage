@@ -6,6 +6,7 @@ namespace StorageTest
         public const string PATH_TO_CHARACTER_CONFIG = "Configs/CharacterMoveSpeedConfig";
 
         #region WINDOWS
+
         public static string UI_HAHAR_VIEW = "UIHangarView";
         public const string UI_GAME_VIEW = "UIGameView";
 

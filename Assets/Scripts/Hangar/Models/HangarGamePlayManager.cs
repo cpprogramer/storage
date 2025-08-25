@@ -13,8 +13,8 @@ namespace StorageTest.Model
             _hangar = new Hangar();
             _hangarView = new HangarView( _hangar, scenesManager, instanceId );
         }
-        
-        public void Start() { CreateAndStart().Forget(); }
+
+        public void Start() => CreateAndStart().Forget();
 
         private async UniTaskVoid CreateAndStart()
         {

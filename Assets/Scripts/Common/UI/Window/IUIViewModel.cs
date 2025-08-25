@@ -7,7 +7,7 @@ namespace Common.UI
         where TLogicAtom : class
     {
         event Action< IUIViewModel< TLogicAtom, TResult >, TResult > OnClosingFinished;
-        
+
         TLogicAtom TypeWindow { get; }
         void Close( TResult result );
         void Initialize( BaseWindowDTO msgDto );

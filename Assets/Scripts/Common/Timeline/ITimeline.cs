@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Assets.Scripts.Timeline
+﻿namespace Assets.Scripts.Timeline
 {
     public interface ITimeline
     {

@@ -12,7 +12,7 @@ namespace StorageTest.Net
         UniTask ConnectAsync();
         void Disconnect();
         UniTask JoinOrCreateRoom();
-        UniTask JoinRoom(string roomName);
+        UniTask JoinRoom( string roomName );
         UniTask JoinLobbyAsync();
     }
 }

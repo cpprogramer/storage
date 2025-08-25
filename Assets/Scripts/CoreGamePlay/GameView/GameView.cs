@@ -1,9 +1,9 @@
 ﻿using Common;
 using Configs;
 using Cysharp.Threading.Tasks;
+using StorageTest.Model;
 using System;
 using System.Linq;
-using StorageTest.Model;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using CameraData = Configs.CameraData;
@@ -24,11 +24,7 @@ namespace StorageTest.View
         private Camera _camera;
         private readonly CameraConfig _cameraConfig;
 
-        public GameView(
-            int instanceUid,
-            IScenesManager scenesManager,
-            IGamePlayReadOnly gamePlay
-        )
+        public GameView( int instanceUid, IScenesManager scenesManager, IGamePlayReadOnly gamePlay )
         {
             _instanceUid = instanceUid;
             _scenesManager = scenesManager ?? throw new ArgumentNullException( nameof(scenesManager) );
@@ -61,11 +57,9 @@ namespace StorageTest.View
             Utils.Destroy( _view );
         }
 
-        private async UniTask LoadLevel()
-        {
+        private async UniTask LoadLevel() =>
             //LevelRoot = await _levelProvider.GetLevelAsync( _view.transform, config );
             OnLevelLoaded?.Invoke();
-        }
 
         private void SubscribeOrUnsubscribe( bool isSubscribe )
         {

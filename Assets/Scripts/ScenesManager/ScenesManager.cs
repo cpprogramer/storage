@@ -26,7 +26,7 @@ namespace Common
         }
 
         //⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊
-        
+
         public async UniTask< Scene > AddSceneAsync( string sceneName, CancellationToken cancellationToken = default )
         {
             // Start loading the scene asynchronously with LoadSceneMode.Additive

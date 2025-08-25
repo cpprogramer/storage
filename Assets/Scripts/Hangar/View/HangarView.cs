@@ -6,7 +6,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
-using CameraData = UnityEngine.Rendering.Universal.CameraData;
+using Configs_CameraData = Configs.CameraData;
 
 namespace StorageTest.Model
 {
@@ -17,7 +17,7 @@ namespace StorageTest.Model
         private ILevelView _levelView;
         private Camera _camera;
         private readonly CameraConfig _cameraConfig;
-        private int _instanceId;
+        private readonly int _instanceId;
 
         public HangarView( Hangar hangar, IScenesManager scenesManager, int instanceId )
         {
@@ -40,7 +40,7 @@ namespace StorageTest.Model
             UniversalAdditionalCameraData data = _camera.GetUniversalAdditionalCameraData();
             data.renderType = CameraRenderType.Overlay;
 
-            var cameraData = _cameraConfig.GetDataByUID( _instanceId );
+            Configs_CameraData cameraData = _cameraConfig.GetDataByUID( _instanceId );
             _levelView.SetCameraOverlay( _camera, cameraData.viewPort );
         }
 

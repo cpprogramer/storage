@@ -8,8 +8,7 @@ namespace StorageTest
     public sealed class Bootstrapper : MonoBehaviour
     {
         [ Header( "вкл 4 окна" ) ]
-        [ SerializeField ]
-        private bool _debugPlayerMode;
+        [ SerializeField ] private bool _debugPlayerMode;
 
         private async UniTask Start()
         {
@@ -21,15 +20,15 @@ namespace StorageTest
             {
                 for ( var i = 1; i <= 4; i++ )
                 {
-                   var gameInst = CreateInstance( i );
-                   await gameInst.InitializeAsync(i, _debugPlayerMode);
-                   gameInst.Run();
+                    GameInstance gameInst = CreateInstance( i );
+                    await gameInst.InitializeAsync( i, _debugPlayerMode );
+                    gameInst.Run();
                 }
             }
             else
             {
-                var gameInst = CreateInstance( 0 );
-                await gameInst.InitializeAsync(0, _debugPlayerMode);
+                GameInstance gameInst = CreateInstance( 0 );
+                await gameInst.InitializeAsync( 0, _debugPlayerMode );
                 gameInst.Run();
             }
         }
@@ -37,7 +36,7 @@ namespace StorageTest
         private GameInstance CreateInstance( int id )
         {
             var go = new GameObject( $"Instance_{id}" );
-            return go.AddComponent< GameInstance >();//.Setup( id, _debugPlayerMode );
+            return go.AddComponent< GameInstance >(); //.Setup( id, _debugPlayerMode );
         }
     }
 }

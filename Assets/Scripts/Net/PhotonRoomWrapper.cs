@@ -62,21 +62,6 @@ namespace StorageTest.Net
             //    PhotonNetwork.CurrentRoom.SetCustomProperties( Helpers.FromSystemHashtable( table ) );
         }
 
-        private Hashtable GetPlayersProperty( int id )
-        {
-            var result = new Hashtable();
-
-            /*if ( Id == PhotonNetwork.CurrentRoom.Name )
-            {
-                Debug.Log( "Count players" + PhotonNetwork.PlayerList.Length );
-                foreach ( Player pl in PhotonNetwork.PlayerList )
-                    if ( pl.ActorNumber == id )
-                        return Helpers.FromPhotonHashTable( pl.CustomProperties );
-            }*/
-
-            return result;
-        }
-
         public void RemovePlayer( string playerId, bool isBot )
         {
             if ( !isBot ) KickPlayerById( playerId );
@@ -97,6 +82,21 @@ namespace StorageTest.Net
 
              Player player = PhotonNetwork.PlayerList.FirstOrDefault( pl => pl.ActorNumber == id );
              if ( player != null ) PhotonNetwork.CloseConnection( player );*/
+        }
+
+        private Hashtable GetPlayersProperty( int id )
+        {
+            var result = new Hashtable();
+
+            /*if ( Id == PhotonNetwork.CurrentRoom.Name )
+            {
+                Debug.Log( "Count players" + PhotonNetwork.PlayerList.Length );
+                foreach ( Player pl in PhotonNetwork.PlayerList )
+                    if ( pl.ActorNumber == id )
+                        return Helpers.FromPhotonHashTable( pl.CustomProperties );
+            }*/
+
+            return result;
         }
     }
 }

@@ -1,7 +1,6 @@
+using StorageTest.Model;
 using System.Diagnostics;
 using System.Linq;
-using Common;
-using StorageTest.Model;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using Debug = UnityEngine.Debug;
@@ -10,26 +9,26 @@ namespace StorageTest.GamePlay
 {
     public sealed class LevelView : MonoBehaviour, ILevelView
     {
-        [SerializeField] private Camera _camera;
-        [SerializeField] private Transform _parentForPlayers;
-        [SerializeField] private Transform[] _spawnPoints;
-       
+        [ SerializeField ] private Camera _camera;
+        [ SerializeField ] private Transform _parentForPlayers;
+        [ SerializeField ] private Transform[] _spawnPoints;
+
+        public Vector3[] SpawnPoints => _spawnPoints.Select( x => x.position ).ToArray();
+
         private Vector2 _sideMaxMin;
 
-        public Vector3[] SpawnPoints => _spawnPoints.Select(x => x.position).ToArray();
-
-        [Conditional("UNITY_EDITOR")]
-        private void OnValidate()
+        public void SetCameraOverlay( Camera main, Rect cameraDataViewPort )
         {
-            Debug.Assert(_parentForPlayers != null, nameof(_parentForPlayers) + " == null");
-            Debug.Assert(_spawnPoints.All(item => item != null), nameof(_spawnPoints) + " == null");
+            UniversalAdditionalCameraData data = _camera.GetUniversalAdditionalCameraData();
+            data.cameraStack.Add( main );
+            _camera.rect = cameraDataViewPort;
         }
 
-        public void SetCameraOverlay(Camera main, Rect cameraDataViewPort)
+        [ Conditional( "UNITY_EDITOR" ) ]
+        private void OnValidate()
         {
-            var data = _camera.GetUniversalAdditionalCameraData();
-            data.cameraStack.Add(main);
-            _camera.rect = cameraDataViewPort;
+            Debug.Assert( _parentForPlayers != null, nameof(_parentForPlayers) + " == null" );
+            Debug.Assert( _spawnPoints.All( item => item != null ), nameof(_spawnPoints) + " == null" );
         }
     }
 }

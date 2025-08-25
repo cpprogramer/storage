@@ -7,7 +7,6 @@ using StorageTest.UI.ViewModel;
 using System;
 using UniRx;
 
-
 namespace FSM
 {
     public sealed class LoadingFSMObject : BaseFiniteStateMachineObject

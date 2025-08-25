@@ -12,16 +12,13 @@ namespace GameFSM
         public event Action OnChanging;
 
         public IFiniteStateMachineObject CurrentState { get; private set; }
-     
+
         private readonly Dictionary< Type, Func< IBaseDTO, IFiniteStateMachineObject > > _stateMachines = new();
 
         public EReasonFSM CanSetState( Type state, IBaseDTO dto = null )
         {
-            if ( CurrentState != null && state == CurrentState.GetType() )
-            {
-                return EReasonFSM.Equal;
-            }
-            
+            if ( CurrentState != null && state == CurrentState.GetType() ) return EReasonFSM.Equal;
+
             return EReasonFSM.Success;
         }
 
@@ -32,6 +29,13 @@ namespace GameFSM
                 Debug.LogError( "Error : Can't add state to GameFSM" );
                 throw new Exception( "Can't add state to GameFSM" );
             }
+        }
+
+        public void Dispose()
+        {
+            OnChanging?.Invoke();
+            CurrentState?.Dispose();
+            CurrentState = null;
         }
 
         void IFSM.SetState( Type state, IBaseDTO dto = null )
@@ -48,18 +52,11 @@ namespace GameFSM
                 CurrentState.Enter();
                 CurrentState.Update();
                 OnChanged?.Invoke();
-               
             }
             else
             {
                 Debug.LogError( $"Error : Can't set state to GameFSM {state} not found" );
             }
-        }
-        public void Dispose()
-        {
-            OnChanging?.Invoke();
-            CurrentState?.Dispose();
-            CurrentState = null;
         }
     }
 }

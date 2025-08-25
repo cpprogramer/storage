@@ -15,13 +15,13 @@ namespace Common.Profile
         private readonly IMessageBroker _messageBroker;
 
         private Dictionary< string, int > _consumables;
-        
+
         public UserInventory( IMessageBroker messageBroker )
         {
             _consumables = new Dictionary< string, int >();
             _messageBroker = messageBroker;
             _messageBroker.Receive< UpdateConsumableRecord >().Subscribe( UpdateConsumableRecordHandler );
-           
+
             //var starterConfig = Resources.Load< StarterSetConsumablesConfig >( "configs/StarterSetConfig" );
             //(string Uid, int Count)[] starterConsumables = starterConfig.GetConsumableModels();
             //UpdateConsumables( starterConsumables );
@@ -42,7 +42,7 @@ namespace Common.Profile
 
                 _consumables = JsonConvert.DeserializeObject< Dictionary< string, int > >( json );
 
-                IEnumerable< (string Key, int Value , int) > consumableData =
+                IEnumerable< (string Key, int Value, int) > consumableData =
                     _consumables.Select( kv => ( kv.Key, kv.Value, 0 ) );
                 _messageBroker.Publish( new UpdateConsumablesMessage( consumableData ) );
             }
@@ -55,6 +55,12 @@ namespace Common.Profile
             return 0;
         }
 
+        public IEnumerable< (string Uid, int current) > GetConsumables()
+        {
+            foreach ( KeyValuePair< string, int > consumable in _consumables )
+                yield return ( consumable.Key, consumable.Value );
+        }
+
         private void UpdateConsumableRecordHandler( UpdateConsumableRecord record )
         {
             var array = new (string Key, int Count, int Prev)[record.ConsumableData.Count()];
@@ -63,15 +69,9 @@ namespace Common.Profile
             {
                 _consumables.TryGetValue( consumableData.key, out int val );
                 array[ i ] = ( consumableData.key, consumableData.valueCurrent, val );
-                _consumables[ consumableData.key ] = ( consumableData.valueCurrent );
+                _consumables[ consumableData.key ] = consumableData.valueCurrent;
             } );
             _messageBroker.Publish( new UpdateConsumablesMessage( array ) );
         }
-
-        public IEnumerable< (string Uid, int current) > GetConsumables()
-        {
-            foreach ( KeyValuePair< string,  int > consumable in _consumables )
-                yield return ( consumable.Key, consumable.Value );
-        }      
     }
 }

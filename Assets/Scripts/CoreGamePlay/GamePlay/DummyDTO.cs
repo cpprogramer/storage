@@ -4,7 +4,7 @@ namespace StorageTest.Messages
 {
     public sealed class DummyDTO : IBaseDTO
     {
-        private DummyDTO() { }
-        public static DummyDTO Dummy = new DummyDTO();
+        public static DummyDTO Dummy = new();
+        private DummyDTO() {}
     }
 }

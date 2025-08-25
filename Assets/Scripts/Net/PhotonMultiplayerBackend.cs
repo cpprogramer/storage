@@ -53,17 +53,27 @@ namespace StorageTest.Net
 
         public void Dispose() => Disconnect();
 
+        public void Disconnect()
+        {
+            RemoveCallbacks();
+            _realtimeClient.StateChanged -= StateChangeHandler;
+            _tickable.OnTick -= TickHandler;
+            _realtimeClient.Disconnect();
+        }
+
         private void TickHandler() => _realtimeClient.Service();
 
-        private void InitializeWithCallbacks() => _callbacks.ForEach( item => { _realtimeClient.AddCallbackTarget( item ); } );
+        private void InitializeWithCallbacks() =>
+            _callbacks.ForEach( item => { _realtimeClient.AddCallbackTarget( item ); } );
 
         private void StateChangeHandler( ClientState previousState, ClientState currentState ) =>
             Debug.LogError(
                 $"[+] pewvState: {previousState}  currstate:{currentState} inLobby:{_realtimeClient.InLobby}" );
 
         async UniTask IMultiplayerBackend.JoinOrCreateRoom() => await _realtimeClient.JoinRandomOrCreateRoomAsync();
-        
-        async UniTask IMultiplayerBackend.JoinRoom(string roomUid) => await _realtimeClient.JoinRoomAsync( new EnterRoomArgs() { RoomName = roomUid } );
+
+        async UniTask IMultiplayerBackend.JoinRoom( string roomUid ) =>
+            await _realtimeClient.JoinRoomAsync( new EnterRoomArgs { RoomName = roomUid } );
 
         async UniTask IMultiplayerBackend.JoinLobbyAsync() => await _realtimeClient.JoinLobbyAsync();
 
@@ -89,14 +99,6 @@ namespace StorageTest.Net
                 InitializeWithCallbacks();
                 _tickable.OnTick += TickHandler;
             }
-        }
-
-        public void Disconnect()
-        {
-            RemoveCallbacks();
-            _realtimeClient.StateChanged -= StateChangeHandler;
-            _tickable.OnTick -= TickHandler;
-            _realtimeClient.Disconnect();
         }
     }
 }

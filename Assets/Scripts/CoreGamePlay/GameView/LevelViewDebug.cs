@@ -8,9 +8,8 @@ namespace StorageTest.GamePlay
     {
         [ SerializeField ] private Camera _camera;
         [ SerializeField ] private Transform _parent;
-        public async UniTask CreateView(  )
-        {
-        }
+
+        public async UniTask CreateView() {}
 
         public void SetCameraOverlay( Camera main, Rect cameraDataViewPort ) {}
     }

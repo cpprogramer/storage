@@ -10,90 +10,69 @@ namespace Common
 {
     public sealed class ResourcesProvider : IResourcesProvider
     {
-        private readonly Dictionary<string, List<AsyncOperationHandle>> _dicLoadedResources = new();
+        private readonly Dictionary< string, List< AsyncOperationHandle > > _dicLoadedResources = new();
 
         //для того чтобы не было случая "конкурентного" обращения к словарю
-        private readonly Stack<string> _stackToRelease = new();
+        private readonly Stack< string > _stackToRelease = new();
 
-        public ResourcesProvider()
-        {}
-
-        public async UniTask<T> LoadResourceAsync<T>(string name)
+        public async UniTask< T > LoadResourceAsync< T >( string name )
             where T : Object
         {
             try
             {
-                while (_stackToRelease.Count > 0)
-                {
-                    ReleaseForce(_stackToRelease.Pop());
-                }
+                while ( _stackToRelease.Count > 0 ) ReleaseForce( _stackToRelease.Pop() );
 
                 DeleteAllInvalidHandles();
                 return await LoadAndAddHandleToDictionaryAsync();
-
             }
-            catch (Exception e)
+            catch ( Exception e )
             {
-                Debug.LogError($"[+] Error load name:{name} message:{e.Message}");
+                Debug.LogError( $"[+] Error load name:{name} message:{e.Message}" );
             }
 
             return null;
 
-            async UniTask<T> LoadAndAddHandleToDictionaryAsync()
+            async UniTask< T > LoadAndAddHandleToDictionaryAsync()
             {
-                var isExist = _dicLoadedResources.ContainsKey(name);
-                if (!isExist)
-                {
-                    _dicLoadedResources[name] = new List<AsyncOperationHandle>();
-                }
-                var asyncOperation = Addressables.LoadAssetAsync<T>(name);
-                _dicLoadedResources[name].Add(asyncOperation);
+                bool isExist = _dicLoadedResources.ContainsKey( name );
+                if ( !isExist ) _dicLoadedResources[ name ] = new List< AsyncOperationHandle >();
+                AsyncOperationHandle< T > asyncOperation = Addressables.LoadAssetAsync< T >( name );
+                _dicLoadedResources[ name ].Add( asyncOperation );
                 return await asyncOperation.ToUniTask();
             }
         }
 
-        public void Release(string name, bool force = false)
+        public void Release( string name, bool force = false )
         {
-            if (force)
-            {
-                ReleaseForce(name);
-            }
+            if ( force )
+                ReleaseForce( name );
             else
-            {
-                _stackToRelease.Push(name);
-            }
+                _stackToRelease.Push( name );
         }
 
-        private void ReleaseForce(string name)
+        private void ReleaseForce( string name )
         {
-            if (_dicLoadedResources.TryGetValue(name, out var list))
-            {
-                for (var i = list.Count - 1; i >= 0; --i)
+            if ( _dicLoadedResources.TryGetValue( name, out List< AsyncOperationHandle > list ) )
+                for ( int i = list.Count - 1; i >= 0; --i )
                 {
-                    var handle = list[i];
-                    list.RemoveAt(i);
-                    if (handle.IsValid())
+                    AsyncOperationHandle handle = list[ i ];
+                    list.RemoveAt( i );
+                    if ( handle.IsValid() )
                     {
-                        Addressables.Release(handle);
+                        Addressables.Release( handle );
                         break;
                     }
                 }
-            }
         }
 
-        private void DeleteAllInvalidHandles()
-        {
-            _dicLoadedResources.ForEach(kv =>
+        private void DeleteAllInvalidHandles() =>
+            _dicLoadedResources.ForEach( kv =>
             {
-                for (var i = kv.Value.Count - 1; i >= 0; --i)
+                for ( int i = kv.Value.Count - 1; i >= 0; --i )
                 {
-                    var handle = kv.Value[i];
-                    if (!handle.IsValid())
-                    {
-                        kv.Value.RemoveAt(i);
-                    }
+                    AsyncOperationHandle handle = kv.Value[ i ];
+                    if ( !handle.IsValid() ) kv.Value.RemoveAt( i );
                 }
-            });
-        }
+            } );
     }
 }

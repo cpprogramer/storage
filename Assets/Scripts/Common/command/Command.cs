@@ -11,14 +11,14 @@ namespace Common
             set {}
         }
 
+        public abstract void Do();
+
+        public virtual void Dispose() {}
+
         protected virtual void Complete()
         {
             Dispose();
             OnCompleted?.Invoke();
         }
-
-        public abstract void Do();
-
-        public virtual void Dispose() {}
     }
 }

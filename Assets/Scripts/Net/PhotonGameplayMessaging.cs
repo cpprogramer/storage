@@ -14,10 +14,6 @@ namespace StorageTest.Net
         //int.TryParse( stringId, out int id ) && PhotonNetwork.LocalPlayer.ActorNumber == id;
         public void Dispose() => OnEventReceived = null;
 
-        private void OnEvent( EventData data ) =>
-            OnEventReceived?.Invoke(
-                new MessageData( data.Sender.ToString(), (MessageCode)data.Code, data.CustomData ) );
-
         public void Enable() {} //PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
 
         public void Disable() {} // PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
@@ -35,6 +31,10 @@ namespace StorageTest.Net
                 new RaiseEventOptions { Receivers = (ReceiverGroup)(int)receiverGroup },
                 new SendOptions { Reliability = true, Encrypt = true } );*/
         }
+
+        private void OnEvent( EventData data ) =>
+            OnEventReceived?.Invoke(
+                new MessageData( data.Sender.ToString(), (MessageCode)data.Code, data.CustomData ) );
 
         private void OnEvent( byte eventCode, object content, int senderId )
         {

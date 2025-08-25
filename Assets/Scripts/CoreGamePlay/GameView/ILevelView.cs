@@ -1,10 +1,9 @@
-﻿using Common;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace StorageTest.Model
 {
     public interface ILevelView
     {
-        void SetCameraOverlay(Camera main, Rect cameraDataViewPort);
+        void SetCameraOverlay( Camera main, Rect cameraDataViewPort );
     }
 }

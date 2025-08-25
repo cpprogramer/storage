@@ -1,11 +1,8 @@
-﻿using Assets.Scripts.Timeline;
-using Configs;
+﻿using Configs;
 using Cysharp.Threading.Tasks;
 using StorageTest;
 using System;
-using UniRx;
 using UnityEngine;
-using CWindow = Common.UI.IUIViewModel< System.Type, Common.UI.WindowResult >;
 
 namespace Common.UI
 {
@@ -14,22 +11,18 @@ namespace Common.UI
         private readonly int _instanceUid;
         private readonly IResourcesProvider _resourcesProvider = new ResourcesProvider();
         private readonly IParentHolder _parentHolder;
-        
+
         private IUIRoot _uiRoot;
         private readonly bool _isDebugMode;
-        
-        public UiRootViewModel(
-            int instanceUid,
-            bool isDebugMode,
-            IParentHolder parentHolder
-        )
+
+        public UiRootViewModel( int instanceUid, bool isDebugMode, IParentHolder parentHolder )
         {
             _instanceUid = instanceUid;
             _isDebugMode = isDebugMode;
             _parentHolder = parentHolder ?? throw new ArgumentNullException( nameof(parentHolder) );
         }
-        
-        async UniTask IUiRootViewModel.InitializeAsync(  )
+
+        async UniTask IUiRootViewModel.InitializeAsync()
         {
             var rootGameObj = await _resourcesProvider.LoadResourceAsync< GameObject >( "UIRoot" );
             GameObject inst = Utils.Instantiate( rootGameObj );

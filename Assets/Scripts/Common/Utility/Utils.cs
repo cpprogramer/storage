@@ -13,25 +13,19 @@ namespace Common
             if ( obj != null ) Object.Destroy( obj, time );
         }
 
-        public static Object Instantiate(Object original)
-        {
-            return GameObject.Instantiate( original );
-        }
-        
-        public static T Instantiate<T>(T original) where T : UnityEngine.Object
-        {
-            return GameObject.Instantiate( original );
-        }
-        
-        public static Type[] GetDerivedTypes(Type baseType)
+        public static Object Instantiate( Object original ) => GameObject.Instantiate( original );
+
+        public static T Instantiate< T >( T original )
+            where T : Object =>
+            GameObject.Instantiate( original );
+
+        public static Type[] GetDerivedTypes( Type baseType )
         {
             // Получаем текущую сборку
-            Assembly assembly = Assembly.GetExecutingAssembly();
-        
+            var assembly = Assembly.GetExecutingAssembly();
+
             // Находим все типы, которые наследуются от baseType
-            return assembly.GetTypes()
-                .Where(t => t != baseType && baseType.IsAssignableFrom(t))
-                .ToArray();
+            return assembly.GetTypes().Where( t => t != baseType && baseType.IsAssignableFrom( t ) ).ToArray();
         }
     }
 }

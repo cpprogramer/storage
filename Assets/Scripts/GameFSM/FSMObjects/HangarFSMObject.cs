@@ -1,5 +1,4 @@
 ﻿using Common;
-using Cysharp.Threading.Tasks;
 using StorageTest.Model;
 using System;
 using UniRx;
@@ -24,10 +23,6 @@ namespace FSM
 
         public override void Dispose() {}
 
-        protected override void OnStart()
-        {
-            _hangarGamePlayManager.Start();
-        }
-        
+        protected override void OnStart() => _hangarGamePlayManager.Start();
     }
 }

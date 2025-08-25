@@ -22,12 +22,6 @@ namespace StorageTest.Configs
 
         public void SetupArgs( string args ) => Args = args;
 
-        protected virtual void Complete()
-        {
-            Dispose();
-            OnCompleted?.Invoke();
-        }
-
         public void Setup( IUserProfile userProfile, IGamePlayConfig gamePlayConfig )
         {
             UserProfile = userProfile ?? throw new ArgumentNullException( nameof(userProfile) );
@@ -37,5 +31,11 @@ namespace StorageTest.Configs
         public void Dispose() {}
 
         public abstract void Do();
+
+        protected virtual void Complete()
+        {
+            Dispose();
+            OnCompleted?.Invoke();
+        }
     }
 }

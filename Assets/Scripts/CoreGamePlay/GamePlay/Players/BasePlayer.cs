@@ -1,5 +1,4 @@
-﻿using System;
-using StorageTest.Lobby;
+﻿using StorageTest.Lobby;
 
 namespace StorageTest.Model
 {
@@ -8,6 +7,5 @@ namespace StorageTest.Model
         public PlayerInfo PlayerInfo { get; }
 
         protected BasePlayer( PlayerInfo playerInfo ) => PlayerInfo = playerInfo;
-        
     }
 }

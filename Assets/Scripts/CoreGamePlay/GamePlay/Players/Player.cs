@@ -1,5 +1,4 @@
-﻿using System;
-using StorageTest.Lobby;
+﻿using StorageTest.Lobby;
 
 namespace StorageTest.Model
 {
@@ -9,6 +8,5 @@ namespace StorageTest.Model
 
         public Player( PlayerInfo info, IGamePlayManager gamePlayManager ) : base( info ) =>
             _gamePlayManager = gamePlayManager;
-    
     }
 }

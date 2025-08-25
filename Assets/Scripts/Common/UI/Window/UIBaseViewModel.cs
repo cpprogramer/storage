@@ -29,12 +29,6 @@ namespace Common.UI
             _resourcesProvider = new ResourcesProvider();
         }
 
-        protected abstract void OnInitialize( BaseWindowDTO dto );
-
-        protected virtual void OnClosing()
-        {
-        }
-
         public void Close( WindowResult result = WindowResult.Undefined )
         {
             OnClosingStarted?.Invoke( this );
@@ -56,29 +50,27 @@ namespace Common.UI
             InitializeAsync( baseDto ).Forget();
         }
 
-        protected void AddRequest(IMessage message)
-        {
-            _uiRootAggregator.UserActionsQueue.AddRequest( message );
-        }
-        
+        protected abstract void OnInitialize( BaseWindowDTO dto );
+
+        protected virtual void OnClosing() {}
+
+        protected void AddRequest( IMessage message ) => _uiRootAggregator.UserActionsQueue.AddRequest( message );
+
         private async UniTaskVoid InitializeAsync( BaseWindowDTO baseDto )
         {
             try
             {
                 var view = await _resourcesProvider.LoadResourceAsync< GameObject >( baseDto.WindowName );
                 _baseView = Utils.Instantiate( view ).GetComponent< TView >();
-                
+
                 UIRoot uiRoot = GameObject.FindObjectsByType< UIRoot >( FindObjectsSortMode.None )
                     .FirstOrDefault( item => item.InsranceID == _uiRootAggregator.InstanceID );
 
-                if ( uiRoot != null )
-                {
-                    uiRoot.SetParent( _baseView.transform, baseDto.WindowLayer );
-                }
+                if ( uiRoot != null ) uiRoot.SetParent( _baseView.transform, baseDto.WindowLayer );
 
                 _baseView.OnStarted += ViewStartedHandler;
 
-                void ViewStartedHandler() => OnInitialize( baseDto );
+                void ViewStartedHandler() { OnInitialize( baseDto ); }
             }
             catch ( Exception e )
             {

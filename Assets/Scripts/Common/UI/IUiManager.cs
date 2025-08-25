@@ -5,6 +5,6 @@ namespace Common.UI
     public interface IUiManager< in TLogicAtom, TResult >
         where TLogicAtom : class
     {
-        void RegisterWindow( TLogicAtom type,  Func<IUIViewModel< TLogicAtom, TResult >> func );
+        void RegisterWindow( TLogicAtom type, Func< IUIViewModel< TLogicAtom, TResult > > func );
     }
 }

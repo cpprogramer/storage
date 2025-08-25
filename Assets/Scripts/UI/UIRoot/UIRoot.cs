@@ -1,3 +1,4 @@
+using Common;
 using Common.UI;
 using System;
 using TMPro;
@@ -11,21 +12,10 @@ namespace UI
         [ SerializeField ] private Canvas _main;
         [ SerializeField ] private TextMeshProUGUI _text;
         [ SerializeField ] private Image _imageDebugFrame;
-        
-        
-        IGUILayerHolder _layers;
         public int InsranceID { get; private set; }
 
-        private void Awake()
-        {
-            InitializeLayers();
-        }
+        private IGUILayerHolder _layers;
 
-        private void InitializeLayers()
-        {
-            _layers = gameObject.GetComponentInChildren<IGUILayerHolder>();
-        }
-        
         public void Setup( int instanceUid, Rect cameraDataViewPort, bool isDebugMode = false )
         {
             InsranceID = instanceUid;
@@ -35,24 +25,24 @@ namespace UI
             camera.rect = cameraDataViewPort;
             _imageDebugFrame.gameObject.SetActive( isDebugMode );
         }
-        
-        public void SetParent( Transform child, Common.WindowLayer layerParent )
+
+        public void SetParent( Transform child, WindowLayer layerParent )
         {
             try
             {
-                if ( _layers == null )
-                {
-                    InitializeLayers();
-                }
-                var parent = _layers.GetLayer( layerParent );
+                if ( _layers == null ) InitializeLayers();
+                Transform parent = _layers.GetLayer( layerParent );
                 child.SetParent( parent, false );
             }
             catch ( Exception e )
             {
-               Debug.LogError( $"[+] Error: {e.Message}" );
+                Debug.LogError( $"[+] Error: {e.Message}" );
                 throw;
             }
-           
         }
+
+        private void Awake() => InitializeLayers();
+
+        private void InitializeLayers() => _layers = gameObject.GetComponentInChildren< IGUILayerHolder >();
     }
 }

@@ -24,6 +24,22 @@ namespace StorageTest.Net
         public LobbyManagerPhoton( RealtimeClient realtimeClient ) =>
             _realtimeClient = realtimeClient ?? throw new ArgumentNullException( nameof(realtimeClient) );
 
+        public async UniTask JoinLobbyAsync()
+        {
+            if ( InLobby )
+                return;
+
+            await _realtimeClient.JoinLobbyAsync();
+        }
+
+        public async UniTask LeaveLobbyAsync()
+        {
+            if ( !InLobby )
+                return;
+
+            await _realtimeClient.LeaveLobbyAsync();
+        }
+
         void ILobbyCallbacks.OnJoinedLobby() => OnJoinedLobbyEvent?.Invoke();
 
         void ILobbyCallbacks.OnLeftLobby() => OnLeftLobbyEvent?.Invoke();
@@ -46,22 +62,6 @@ namespace StorageTest.Net
             _cachedRooms.AddRange( rooms );
 
             OnRoomListUpdateEvent?.Invoke( rooms );
-        }
-
-        public async UniTask JoinLobbyAsync()
-        {
-            if ( InLobby )
-                return;
-
-            await _realtimeClient.JoinLobbyAsync();
-        }
-
-        public async UniTask LeaveLobbyAsync()
-        {
-            if ( !InLobby )
-                return;
-
-            await _realtimeClient.LeaveLobbyAsync();
         }
     }
 }

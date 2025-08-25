@@ -4,6 +4,6 @@ namespace StorageTest
 {
     public interface IParentHolder
     {
-        void Attach(Transform child);
+        void Attach( Transform child );
     }
 }

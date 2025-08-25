@@ -1,8 +1,6 @@
 using Common;
 using Common.Models;
-using Common.UI;
 using Configs;
-using Cysharp.Threading.Tasks;
 using StorageTest.Lobby;
 using StorageTest.Model;
 using StorageTest.UI;
@@ -40,23 +38,23 @@ namespace FSM
                 .AddTo( _compositeDisposable );
         }
 
-        protected override void OnStart() => _playManager.Start();
-
-        protected override void OnInitialize() => _playManager.Initialize();
-
-        private void ExitFromGameMessageHandler( ExitFromGameMessage message ) =>
-            _parentFsm.SetState( typeof(MainMenuFSMObject) );
-
         public override void Dispose()
         {
             _playManager.Dispose();
             _compositeDisposable.Dispose();
         }
 
+        protected override void OnStart() => _playManager.Start();
+
+        protected override void OnInitialize() => _playManager.Initialize();
+
         protected override void OnCreate()
         {
             _playManager = new GamePlayManager( _instanceUid, _messageBroker, _scenesManager, _gamePlayConfig, _dto );
             _playManager.Create();
         }
+
+        private void ExitFromGameMessageHandler( ExitFromGameMessage message ) =>
+            _parentFsm.SetState( typeof(MainMenuFSMObject) );
     }
 }

@@ -1,5 +1,5 @@
-using System;
 using StorageTest.Net;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,12 +13,13 @@ namespace StorageTest.UI
         [ SerializeField ] private Button _joinRoomButton;
 
         private IRoomInfo _room;
-        private void Awake() => _joinRoomButton.onClick.AddListener( () => { OnJoinRoomClicked?.Invoke(); } );
 
         public void Setup( IRoomInfo room )
         {
             _room = room;
             _roomInfoText.text = room.Name;
         }
+
+        private void Awake() => _joinRoomButton.onClick.AddListener( () => { OnJoinRoomClicked?.Invoke(); } );
     }
 }

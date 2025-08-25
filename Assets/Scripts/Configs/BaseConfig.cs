@@ -8,8 +8,8 @@ namespace Common.Configs
         public string NameEditor;
         public string Uid => name;
 
-        private void OnValidate() => Validate();
-
         [ Conditional( "UNITY_EDITOR" ) ] public virtual void Validate() {}
+
+        private void OnValidate() => Validate();
     }
 }

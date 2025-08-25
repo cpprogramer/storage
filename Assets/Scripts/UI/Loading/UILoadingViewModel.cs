@@ -6,10 +6,8 @@ namespace StorageTest.UI.ViewModel
 {
     public class UILoadingViewModel : UIBaseViewModel< UILoadingView >
     {
-        public UILoadingViewModel( IUiRootAggregator uiRootAggregator ) : base( uiRootAggregator )
-        {
-        }
+        public UILoadingViewModel( IUiRootAggregator uiRootAggregator ) : base( uiRootAggregator ) {}
 
-        protected override void OnInitialize( BaseWindowDTO dto ){}
+        protected override void OnInitialize( BaseWindowDTO dto ) {}
     }
 }

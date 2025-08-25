@@ -28,7 +28,7 @@ namespace StorageTest.UI.ViewModel
             _compositeDisposable = new CompositeDisposable();
             _dto = (UINetLobbyDTO)dto;
             _baseView.OnExitClicked += ExitClickedHandler;
-            _baseView.OnJoinOrCreateRoomClicked  += JoinOrCreateRoomClickedHandler;
+            _baseView.OnJoinOrCreateRoomClicked += JoinOrCreateRoomClickedHandler;
             _multiplayerService.OnRoomListUpdate += RoomListUpdateHandler;
             _baseView.Setup( _multiplayerService.CachedRooms );
         }

@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using StorageTest.Lobby;
+﻿using StorageTest.Lobby;
+using System.Collections.Generic;
 
 namespace StorageTest.Model
 {
