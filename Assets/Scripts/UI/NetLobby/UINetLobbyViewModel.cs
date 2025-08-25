@@ -1,28 +1,25 @@
 ﻿using Common.UI;
 using Common.UI.Messages;
 using Common.UI.Model;
-using System;
-using System.Threading;
 using StorageTest.Net;
 using StorageTest.UI.View;
+using System;
+using System.Threading;
 using UniRx;
 
-namespace StorageTest.UI.Controllers
+namespace StorageTest.UI.ViewModel
 {
-    public sealed class UINetLobbyController : UIBaseViewModel< UINetLobbyView >
+    public sealed class UINetLobbyViewModel : UIBaseViewModel< UINetLobbyView >
     {
         private UINetLobbyDTO _dto;
         private readonly IMultiplayerService _multiplayerService;
-
         private CompositeDisposable _compositeDisposable = new();
         private CancellationTokenSource _cancellationTokenSource;
         private bool _isClosed;
 
-        public UINetLobbyController( IUiRootAggregator uiRootAggregator, IMultiplayerService multiplayerService ) :
-            base( uiRootAggregator )
-        {
+        public UINetLobbyViewModel( IUiRootAggregator uiRootAggregator, IMultiplayerService multiplayerService ) :
+            base( uiRootAggregator ) =>
             _multiplayerService = multiplayerService ?? throw new ArgumentNullException( nameof(multiplayerService) );
-        }
 
         protected override void OnInitialize( BaseWindowDTO dto )
         {
@@ -31,7 +28,7 @@ namespace StorageTest.UI.Controllers
             _compositeDisposable = new CompositeDisposable();
             _dto = (UINetLobbyDTO)dto;
             _baseView.OnExitClicked += ExitClickedHandler;
-            _baseView.OnJoinOrCreateRoomClicked += JoinOrCreateRoomClickedHandler;
+            _baseView.OnJoinOrCreateRoomClicked  += JoinOrCreateRoomClickedHandler;
             _multiplayerService.OnRoomListUpdate += RoomListUpdateHandler;
             _baseView.Setup( _multiplayerService.CachedRooms );
         }
@@ -46,10 +43,11 @@ namespace StorageTest.UI.Controllers
             _compositeDisposable.Dispose();
         }
 
-        private void ExitClickedHandler() => _uiRootAggregator.MessageBroker.Publish( new UIExitFromLobbyToMainMenuMessage() );
+        private void ExitClickedHandler() =>
+            _uiRootAggregator.MessageBroker.Publish( new UIExitFromLobbyToMainMenuMessage() );
 
         private void RoomListUpdateHandler( IRoomInfo[] roomInfos ) => _baseView.Setup( roomInfos );
 
-        private void JoinOrCreateRoomClickedHandler() => _uiRootAggregator.MessageBroker.Publish( new UIJoinOrCreateRoomMessage() );
+        private void JoinOrCreateRoomClickedHandler() => AddRequest( new UIJoinOrCreateRoomMessage() );
     }
 }

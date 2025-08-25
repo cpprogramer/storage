@@ -1,4 +1,5 @@
 using Common.UI;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,11 @@ namespace UI
 
         private void Awake()
         {
+            InitializeLayers();
+        }
+
+        private void InitializeLayers()
+        {
             _layers = gameObject.GetComponentInChildren<IGUILayerHolder>();
         }
         
@@ -32,8 +38,21 @@ namespace UI
         
         public void SetParent( Transform child, Common.WindowLayer layerParent )
         {
-            var parent = _layers.GetLayer( layerParent );
-            child.SetParent( parent, false );
+            try
+            {
+                if ( _layers == null )
+                {
+                    InitializeLayers();
+                }
+                var parent = _layers.GetLayer( layerParent );
+                child.SetParent( parent, false );
+            }
+            catch ( Exception e )
+            {
+               Debug.LogError( $"[+] Error: {e.Message}" );
+                throw;
+            }
+           
         }
     }
 }

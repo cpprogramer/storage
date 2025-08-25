@@ -14,7 +14,7 @@ namespace FSM
     public sealed class GameFSMObject : BaseFiniteStateMachineObject
     {
         private readonly IGamePlayConfig _gamePlayConfig;
-        private readonly StartGameModel _model;
+        private readonly StartGameDTO _dto;
         private readonly IScenesManager _scenesManager;
         private readonly IMessageBroker _messageBroker;
         private GamePlayManager _playManager;
@@ -25,7 +25,7 @@ namespace FSM
             int instanceUid,
             IFSM parentFsm,
             IScenesManager scenesManager,
-            IBaseModel baseModel,
+            IBaseDTO baseDto,
             IGamePlayConfig gamePlayConfig,
             IMessageBroker messageBroker
         ) : base( parentFsm )
@@ -35,7 +35,7 @@ namespace FSM
             _scenesManager = scenesManager ?? throw new ArgumentNullException( nameof(scenesManager) );
             _messageBroker = messageBroker ?? throw new ArgumentNullException( nameof(messageBroker) );
 
-            _model = baseModel as StartGameModel;
+            _dto = baseDto as StartGameDTO;
             _messageBroker.Receive< ExitFromGameMessage >().Subscribe( ExitFromGameMessageHandler )
                 .AddTo( _compositeDisposable );
         }
@@ -55,7 +55,7 @@ namespace FSM
 
         protected override void OnCreate()
         {
-            _playManager = new GamePlayManager( _instanceUid, _messageBroker, _scenesManager, _gamePlayConfig, _model );
+            _playManager = new GamePlayManager( _instanceUid, _messageBroker, _scenesManager, _gamePlayConfig, _dto );
             _playManager.Create();
         }
     }

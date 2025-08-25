@@ -10,6 +10,6 @@ namespace StorageTest.Lobby
 
         public StartGameService( IFSM fsm ) => _fsm = fsm ?? throw new ArgumentNullException( nameof(fsm) );
 
-        public void StartGame( StartGameModel model ) => _fsm.SetState( typeof(GameFSMObject), model );
+        public void StartGame( StartGameDTO dto ) => _fsm.SetState( typeof(GameFSMObject), dto );
     }
 }

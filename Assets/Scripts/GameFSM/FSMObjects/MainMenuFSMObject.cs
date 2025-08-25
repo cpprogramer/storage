@@ -1,10 +1,10 @@
-using System;
 using Common;
 using Common.UI;
 using Common.UI.Messages;
 using StorageTest.Lobby;
 using StorageTest.Messages;
-using StorageTest.UI.Controllers;
+using StorageTest.UI.ViewModel;
+using System;
 using UniRx;
 
 namespace FSM
@@ -19,28 +19,26 @@ namespace FSM
             IFSM parentFsm,
             IStartGameService startGameService,
             IMessageBroker messageBroker
-        ) : base(parentFsm)
+        ) : base( parentFsm )
         {
-            _startGameService = startGameService ?? throw new ArgumentNullException(nameof(startGameService));
-            _messageBroker = messageBroker ?? throw new ArgumentNullException(nameof(messageBroker));
+            _startGameService = startGameService ?? throw new ArgumentNullException( nameof(startGameService) );
+            _messageBroker = messageBroker ?? throw new ArgumentNullException( nameof(messageBroker) );
         }
 
         public override void Dispose()
         {
             _compositeDisposable.Dispose();
-            _messageBroker.Publish(new UICloseWindowMessage(typeof(UIMainMenuController), WindowResult.Back));
+            _messageBroker.Publish( new UICloseWindowMessage( typeof(UIMainMenuViewModel), WindowResult.Back ) );
         }
 
         protected override void OnInitialize()
         {
             _compositeDisposable = new CompositeDisposable();
-            _messageBroker.Publish(new UIOpenWindowMessage(new UIMainMenuDTO()));
-            _messageBroker.Receive<GotoHangarMessage>().Subscribe(GotoHangarMessageHandler);
+            _messageBroker.Publish( new UIOpenWindowMessage( new UIMainMenuDTO() ) );
+            _messageBroker.Receive< GotoHangarMessage >().Subscribe( GotoHangarMessageHandler );
         }
 
-        private void GotoHangarMessageHandler(GotoHangarMessage msg)
-        {
-            _parentFsm.SetState(typeof(HangarFSMObject));
-        }
+        private void GotoHangarMessageHandler( GotoHangarMessage msg ) =>
+            _parentFsm.SetState( typeof(HangarFSMObject) );
     }
 }

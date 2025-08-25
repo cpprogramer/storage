@@ -3,7 +3,7 @@ using Common.UI;
 using Common.UI.Messages;
 using Cysharp.Threading.Tasks;
 using StorageTest.Net;
-using StorageTest.UI.Controllers;
+using StorageTest.UI.ViewModel;
 using System;
 using UniRx;
 using UnityEngine;
@@ -27,15 +27,10 @@ namespace FSM
             _multiplayerService = multiplayerService ?? throw new ArgumentNullException( nameof(multiplayerService) );
         }
 
-        protected override void OnStart()
-        {
-            _messageBroker.Publish( new UIOpenWindowMessage( new UINetLobbyDTO() ) );
-        }
-
         public override void Dispose()
         {
             _disposable.Dispose();
-            _messageBroker.Publish( new UICloseWindowMessage( typeof(UINetLobbyController), WindowResult.Back ) );
+            _messageBroker.Publish( new UICloseWindowMessage( typeof(UINetLobbyViewModel), WindowResult.Back ) );
         }
 
         public override void Update()
@@ -45,10 +40,11 @@ namespace FSM
 
             _messageBroker.Receive< UIJoinOrCreateRoomMessage >().Subscribe( UIJoinOrCreateRoomMessageHandler )
                 .AddTo( _disposable );
-            
-            _messageBroker.Receive< UIJoinRoomMessage >().Subscribe( UIJoinRoomMessageHandler )
-                .AddTo( _disposable );
+
+            _messageBroker.Receive< UIJoinRoomMessage >().Subscribe( UIJoinRoomMessageHandler ).AddTo( _disposable );
         }
+
+        protected override void OnStart() => _messageBroker.Publish( new UIOpenWindowMessage( new UINetLobbyDTO() ) );
 
         private void UIExitFromLobbyToMainMenuMessageHandler( UIExitFromLobbyToMainMenuMessage msg )
         {
@@ -61,7 +57,7 @@ namespace FSM
             Debug.LogError( "[+] JOIN or Create" );
             TryJoinOrCreateRoom().Forget();
         }
-        
+
         private void UIJoinRoomMessageHandler( UIJoinRoomMessage msg )
         {
             Debug.LogError( "[+] JOIN" );
@@ -74,7 +70,7 @@ namespace FSM
             await _multiplayerService.JoinOrCreateRoom();
             Debug.LogError( "[+] JOIN 1" );
         }
-        
+
         private async UniTaskVoid TryJoinRoom()
         {
             Debug.LogError( "[+] JOIN 0" );

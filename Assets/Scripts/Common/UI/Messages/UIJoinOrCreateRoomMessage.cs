@@ -1,6 +1,8 @@
-﻿namespace Common.UI.Messages
+﻿using Common.Messages;
+
+namespace Common.UI.Messages
 {
-    public readonly struct UIJoinOrCreateRoomMessage
+    public readonly struct UIJoinOrCreateRoomMessage : IMessage
     {
     }
 }

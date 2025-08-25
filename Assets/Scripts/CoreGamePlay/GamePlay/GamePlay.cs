@@ -11,14 +11,14 @@ namespace StorageTest.Model
 
         private readonly IPlayersHolder _playersHolder = new PlayersHolder();
 
-        public GamePlay(StartGameModel startGameModel)
+        public GamePlay(StartGameDTO startGameDto)
         {
-            StartGameModel = startGameModel ?? throw new ArgumentNullException(nameof(startGameModel));
+            StartGameDto = startGameDto ?? throw new ArgumentNullException(nameof(startGameDto));
         }
 
         public bool IsDisposed { get; private set; }
 
-        public StartGameModel StartGameModel { get; }
+        public StartGameDTO StartGameDto { get; }
 
 
         public void Initialize()
@@ -26,7 +26,7 @@ namespace StorageTest.Model
             Debug.Log("GAME PLAY INITIALIZE");
 
             //
-            StartGameModel.Players.ForEach(playerInfo =>
+            StartGameDto.Players.ForEach(playerInfo =>
             {
                 // IPlayer player = _playerResolver.Resolve( playerInfo.PlayerType, playerInfo, default );
                 //_playersHolder.AddPlayer( player );

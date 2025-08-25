@@ -5,6 +5,6 @@ namespace StorageTest.Model
     public interface IGamePlayReadOnly
     {
         bool IsDisposed { get; }
-        StartGameModel StartGameModel { get; }
+        StartGameDTO StartGameDto { get; }
     }
 }

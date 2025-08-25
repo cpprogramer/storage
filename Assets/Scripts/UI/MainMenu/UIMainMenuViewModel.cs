@@ -10,16 +10,16 @@ using UniRx;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
-namespace StorageTest.UI.Controllers
+namespace StorageTest.UI.ViewModel
 {
-    public sealed class UIMainMenuController : UIBaseViewModel<UIMainMenuView>
+    public sealed class UIMainMenuViewModel : UIBaseViewModel<UIMainMenuView>
     {
         private readonly IConsumablesConfig _consumablesConfig;
         private readonly IUserProfile _userProfile;
       
         private UIMainMenuDTO _dto;
 
-        public UIMainMenuController(IUiRootAggregator uiRootAggregator, IUserProfile userProfile)
+        public UIMainMenuViewModel(IUiRootAggregator uiRootAggregator, IUserProfile userProfile)
             : base(uiRootAggregator)
         {
             _userProfile = userProfile ?? throw new ArgumentNullException(nameof(userProfile));

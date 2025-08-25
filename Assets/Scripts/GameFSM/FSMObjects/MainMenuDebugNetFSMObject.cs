@@ -1,11 +1,11 @@
-﻿using System;
-using Common;
+﻿using Common;
 using Common.UI.Messages;
 using Cysharp.Threading.Tasks;
 using StorageTest.Lobby;
 using StorageTest.Messages;
 using StorageTest.Net;
-using StorageTest.UI.Controllers;
+using StorageTest.UI.ViewModel;
+using System;
 using UniRx;
 
 namespace FSM
@@ -22,11 +22,22 @@ namespace FSM
             IStartGameService startGameService,
             IMultiplayerService multiplayerService,
             IMessageBroker messageBroker
-        ) : base(parentFsm)
+        ) : base( parentFsm )
         {
-            _startGameService = startGameService ?? throw new ArgumentNullException(nameof(startGameService));
-            _messageBroker = messageBroker ?? throw new ArgumentNullException(nameof(messageBroker));
-            _multiplayerService = multiplayerService ?? throw new ArgumentNullException(nameof(multiplayerService));
+            _startGameService = startGameService ?? throw new ArgumentNullException( nameof(startGameService) );
+            _messageBroker = messageBroker ?? throw new ArgumentNullException( nameof(messageBroker) );
+            _multiplayerService = multiplayerService ?? throw new ArgumentNullException( nameof(multiplayerService) );
+        }
+
+        public override void Dispose() => _compositeDisposable.Dispose();
+
+        //_uiManager.CloseWindow( new UICloseWindowMessage( typeof(UIMainMenuController), WindowResult.Back ) );
+        protected override void OnInitialize()
+        {
+            _compositeDisposable = new CompositeDisposable();
+            _messageBroker.Receive< UIConnectToLobbyMessage >().Subscribe( UIConnectToLobbyMessageHandler )
+                .AddTo( _compositeDisposable );
+            _messageBroker.Publish( new UIOpenWindowMessage( new UIMainMenuDTO() ) );
         }
 
         /* private void TestEventDeleteLaterHandler()
@@ -43,40 +54,24 @@ namespace FSM
              _startGameService.StartGame( new StartGameModel( Consts.TESTGAMEPLAY, "TestLevel", players ) );
          }*/
 
-        private void UIConnectToLobbyMessageHandler(UIConnectToLobbyMessage msg)
-        {
+        private void UIConnectToLobbyMessageHandler( UIConnectToLobbyMessage msg ) =>
             TryConnectAndJoinToLobby().Forget();
-        }
-
-        public override void Dispose()
-        {
-            _compositeDisposable.Dispose();
-            //_uiManager.CloseWindow( new UICloseWindowMessage( typeof(UIMainMenuController), WindowResult.Back ) );
-        }
 
         private async UniTaskVoid TryConnectAndJoinToLobby()
         {
             await _multiplayerService.ConnectAsync();
-            if (!_multiplayerService.IsConnectedAndReady)
+            if ( !_multiplayerService.IsConnectedAndReady )
                 //TODO диалог
                 //_uiManager.ShowWindow( new UIOpenWindowMessage( new UIMessageBoxModel() ) );
                 return;
 
             await _multiplayerService.JoinLobbyAsync();
-            if (!_multiplayerService.InLobby)
+            if ( !_multiplayerService.InLobby )
                 //TODO диалог
                 //_uiManager.ShowWindow( new UIOpenWindowMessage( new UIMessageBoxModel() ) );
                 return;
 
-            _parentFsm.SetState(typeof(NetLobbyFSMObject));
-        }
-
-        protected override void OnInitialize()
-        {
-            _compositeDisposable = new CompositeDisposable();
-            _messageBroker.Receive<UIConnectToLobbyMessage>().Subscribe(UIConnectToLobbyMessageHandler)
-                .AddTo(_compositeDisposable);
-            _messageBroker.Publish(new UIOpenWindowMessage(new UIMainMenuDTO()));
+            _parentFsm.SetState( typeof(NetLobbyFSMObject) );
         }
     }
 }

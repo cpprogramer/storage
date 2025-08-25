@@ -47,13 +47,13 @@ public sealed class TestFSM
     {
         try
         {
-            IBaseModel model = new Mock< IBaseModel >().Object;
+            IBaseDTO dto = new Mock< IBaseDTO >().Object;
             List< Type > list = Enumerable.Repeat( typeof(TestState1), 10 ).ToList();
             list.AddRange( Enumerable.Repeat( typeof(TestState2), 10 ) );
 
             IEnumerable< Type > randomized = list.Randomize();
 
-            randomized.ForEach( item => { _fsm.SetState( item, model /*DummyModel.Dummy*/ ); } );
+            randomized.ForEach( item => { _fsm.SetState( item, dto /*DummyModel.Dummy*/ ); } );
         }
         catch ( Exception e )
         {
@@ -68,18 +68,18 @@ public sealed class TestFSM
         try
         {
             var i = 10;
-            IBaseModel model = new Mock< IBaseModel >().Object;
+            IBaseDTO dto = new Mock< IBaseDTO >().Object;
             _fsm.OnChanged += ChangedHandler;
-            _fsm.SetState( typeof(TestState1), model );
+            _fsm.SetState( typeof(TestState1), dto );
 
             void ChangedHandler()
             {
                 Debug.Log( $"Changed {i}" );
                 if ( i-- > 0 )
                 {
-                    _fsm.SetState( typeof(TestState1), model );
-                    _fsm.SetState( typeof(TestState2), model );
-                    _fsm.SetState( typeof(TestState1), model );
+                    _fsm.SetState( typeof(TestState1), dto );
+                    _fsm.SetState( typeof(TestState2), dto );
+                    _fsm.SetState( typeof(TestState1), dto );
                 }
             }
         }

@@ -2,6 +2,6 @@ namespace StorageTest.Lobby
 {
     public interface IStartGameService
     {
-        public void StartGame( StartGameModel model );
+        public void StartGame( StartGameDTO dto );
     }
 }

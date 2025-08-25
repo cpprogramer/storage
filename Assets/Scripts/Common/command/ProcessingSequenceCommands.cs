@@ -7,6 +7,12 @@ namespace Common
 
         public override void StartExecute() => Execute();
 
+        public override void ForceFinish()
+        {
+            base.ForceFinish();
+            _currentActive?.Dispose();
+        }
+
         protected override void Execute()
         {
             if ( _canExecute )
@@ -33,12 +39,6 @@ namespace Common
             _currentActive = null;
             _canExecute = true;
             Execute();
-        }
-
-        public override void ForceFinish()
-        {
-            base.ForceFinish();
-            _currentActive?.Dispose();
         }
     }
 }

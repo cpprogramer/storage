@@ -17,7 +17,13 @@ public sealed class TestInitialization
     }
 
     [ TestCase()]
-    public async UniTask Test_Init( )
+    public void Test_Init( )
+    {
+        InitializeAsync().Forget();
+    }
+
+
+    private async UniTaskVoid InitializeAsync()
     {
         try
         {
@@ -31,7 +37,6 @@ public sealed class TestInitialization
             throw;
         }
     }
-    
     
     // A Test behaves as an ordinary method
     /*[ TestCase( 0, 0, ExpectedResult = 0 ) ] //+

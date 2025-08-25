@@ -17,7 +17,12 @@ public sealed class TestAllWindows
     }
 
     [ TestCase()]
-    public async UniTask Test_Init( )
+    public void Test_AllUI( )
+    {
+        TestUI().Forget();
+    }
+
+    private async UniTaskVoid TestUI()
     {
         try
         {

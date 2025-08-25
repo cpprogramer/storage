@@ -2,13 +2,13 @@ using Common.Models;
 
 namespace StorageTest.Lobby
 {
-    public sealed class StartGameModel : IBaseModel
+    public sealed class StartGameDTO : IBaseDTO
     {
         public PlayerInfo[] Players { get; }
         public string SceneName { get; }
         public string LevelName { get; }
 
-        public StartGameModel( string sceneName, string levelName, PlayerInfo[] players )
+        public StartGameDTO( string sceneName, string levelName, PlayerInfo[] players )
         {
             SceneName = sceneName;
             LevelName = levelName;

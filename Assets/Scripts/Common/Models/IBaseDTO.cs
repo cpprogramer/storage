@@ -1,6 +1,6 @@
 ﻿namespace Common.Models
 {
-    public interface IBaseModel
+    public interface IBaseDTO
     {
     }
 }

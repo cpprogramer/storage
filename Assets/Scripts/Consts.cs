@@ -7,7 +7,6 @@ namespace StorageTest
 
         #region WINDOWS
         public static string UI_HAHAR_VIEW = "UIHangarView";
-        public const string UI_WAITPLAYERS_VIEW = "UIWaitPlayersView";
         public const string UI_GAME_VIEW = "UIGameView";
 
         public const string TESTGAMEPLAY = "TestGamePlay";

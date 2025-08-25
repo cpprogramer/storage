@@ -1,23 +1,21 @@
 using Common;
 using Cysharp.Threading.Tasks;
-using StorageTest;
 using Moq;
 using NUnit.Framework;
+using StorageTest;
 using System;
 
 public sealed class TestAllFSM
 {
-
     private GameRoot _gameRoot;
-    
-    [ SetUp ]
-    public void Setup()
-    {
-        _gameRoot = new GameRoot( 0,new Mock<ITickable>().Object, new Mock<IParentHolder>().Object, false );
-    }
 
-    [ TestCase()]
-    public async UniTask Test_Init( )
+    [ SetUp ]
+    public void Setup() =>
+        _gameRoot = new GameRoot( 0, new Mock< ITickable >().Object, new Mock< IParentHolder >().Object, false );
+
+    [ TestCase ] public void Test_AllFSMs() => Test().Forget();
+
+    private async UniTaskVoid Test()
     {
         try
         {
@@ -33,9 +31,6 @@ public sealed class TestAllFSM
         }
     }
 
-   
-    
-    
     // A Test behaves as an ordinary method
     /*[ TestCase( 0, 0, ExpectedResult = 0 ) ] //+
     [ TestCase( 10, 29, ExpectedResult = 14 ) ]
@@ -46,5 +41,4 @@ public sealed class TestAllFSM
     {
         return 0;
     }*/
-  
 }

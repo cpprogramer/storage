@@ -15,8 +15,8 @@ namespace Common
         event Action OnChanged;
         event Action OnChanging;
 
-        void RegisterState( Type state, Func< IBaseModel, IFiniteStateMachineObject > func );
-        void SetState( Type state, IBaseModel model = null );
-        EReasonFSM CanSetState( Type state, IBaseModel model = null );
+        void RegisterState( Type state, Func< IBaseDTO, IFiniteStateMachineObject > func );
+        void SetState( Type state, IBaseDTO dto = null );
+        EReasonFSM CanSetState( Type state, IBaseDTO dto = null );
     }
 }

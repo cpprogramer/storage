@@ -13,9 +13,9 @@ namespace GameFSM
 
         public IFiniteStateMachineObject CurrentState { get; private set; }
      
-        private readonly Dictionary< Type, Func< IBaseModel, IFiniteStateMachineObject > > _stateMachines = new();
+        private readonly Dictionary< Type, Func< IBaseDTO, IFiniteStateMachineObject > > _stateMachines = new();
 
-        public EReasonFSM CanSetState( Type state, IBaseModel model = null )
+        public EReasonFSM CanSetState( Type state, IBaseDTO dto = null )
         {
             if ( CurrentState != null && state == CurrentState.GetType() )
             {
@@ -25,7 +25,7 @@ namespace GameFSM
             return EReasonFSM.Success;
         }
 
-        public void RegisterState( Type type, Func< IBaseModel, IFiniteStateMachineObject > func )
+        public void RegisterState( Type type, Func< IBaseDTO, IFiniteStateMachineObject > func )
         {
             if ( !_stateMachines.TryAdd( type, func ) )
             {
@@ -34,17 +34,17 @@ namespace GameFSM
             }
         }
 
-        void IFSM.SetState( Type state, IBaseModel model = null )
+        void IFSM.SetState( Type state, IBaseDTO dto = null )
         {
-            if ( CanSetState( state, model ) != EReasonFSM.Success ) return;
+            if ( CanSetState( state, dto ) != EReasonFSM.Success ) return;
 
-            if ( _stateMachines.TryGetValue( state, out Func< IBaseModel, IFiniteStateMachineObject > result ) )
+            if ( _stateMachines.TryGetValue( state, out Func< IBaseDTO, IFiniteStateMachineObject > result ) )
             {
                 OnChanging?.Invoke();
                 CurrentState?.Exit();
                 CurrentState?.Dispose();
 
-                CurrentState = result.Invoke( model );
+                CurrentState = result.Invoke( dto );
                 CurrentState.Enter();
                 CurrentState.Update();
                 OnChanged?.Invoke();

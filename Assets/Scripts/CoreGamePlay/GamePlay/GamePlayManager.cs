@@ -1,25 +1,19 @@
 ﻿using Common;
-using Common.UI;
-using Common.UI.Messages;
 using Configs;
-using Cysharp.Threading.Tasks;
-using StorageTest.UI.Controllers;
-using System;
-using System.Collections.Generic;
 using StorageTest.Lobby;
 using StorageTest.Messages;
 using StorageTest.View;
+using System;
 using UniRx;
-using UnityEngine;
 
 namespace StorageTest.Model
 {
     public sealed class GamePlayManager : IGamePlayManager, IDisposable
     {
         public IGamePlayReadOnly GamePlayReadOnly => _gamePlay;
-     
+
         private readonly IGamePlayConfig _gamePlayConfig;
-        private readonly StartGameModel _model;
+        private readonly StartGameDTO _dto;
         private readonly IScenesManager _scenesManager;
         private IGamePlay _gamePlay;
         private IGameView _gameView;
@@ -31,7 +25,7 @@ namespace StorageTest.Model
             IMessageBroker messageBroker,
             IScenesManager scenesManager,
             IGamePlayConfig gamePlayConfig,
-            StartGameModel model
+            StartGameDTO dto
         )
         {
             _instanceUid = instanceUid;
@@ -39,18 +33,15 @@ namespace StorageTest.Model
             _messageBroker = messageBroker ?? throw new ArgumentNullException( nameof(messageBroker) );
 
             _gamePlayConfig = gamePlayConfig;
-            _model = model;
-            
-           /* var container = new Dictionary< PlayerType, Func< PlayerInfo, IGamePlayManager, IPlayer > >
-            {
-                { PlayerType.bot, ( playerInfo, context ) => new BotPlayer( playerInfo ) },
-                { PlayerType.main, ( playerInfo, context ) => new Player( playerInfo, context ) },
-                { PlayerType.other, ( playerInfo, context ) => new OtherPlayer( playerInfo ) }
-            };*/
-            
-        }
+            _dto = dto;
 
-        private void LevelLoadedHandler() => _gameView.OnLevelLoaded -= LevelLoadedHandler;
+            /* var container = new Dictionary< PlayerType, Func< PlayerInfo, IGamePlayManager, IPlayer > >
+             {
+                 { PlayerType.bot, ( playerInfo, context ) => new BotPlayer( playerInfo ) },
+                 { PlayerType.main, ( playerInfo, context ) => new Player( playerInfo, context ) },
+                 { PlayerType.other, ( playerInfo, context ) => new OtherPlayer( playerInfo ) }
+             };*/
+        }
 
         public void Dispose()
         {
@@ -61,7 +52,7 @@ namespace StorageTest.Model
 
         public void Create()
         {
-            _gamePlay = new GamePlay( _model );
+            _gamePlay = new GamePlay( _dto );
             _gameView = new GameView( _instanceUid, _scenesManager, _gamePlay );
         }
 
@@ -77,5 +68,7 @@ namespace StorageTest.Model
             _gameView.Start();
             _gamePlay.Start();
         }
+
+        private void LevelLoadedHandler() => _gameView.OnLevelLoaded -= LevelLoadedHandler;
     }
 }

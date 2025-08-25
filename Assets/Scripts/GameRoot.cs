@@ -11,7 +11,7 @@ using StorageTest.Lobby;
 using StorageTest.Messages;
 using StorageTest.Net;
 using StorageTest.Profile;
-using StorageTest.UI.Controllers;
+using StorageTest.UI.ViewModel;
 using System;
 using UniRx;
 using UnityEngine;
@@ -43,7 +43,9 @@ namespace StorageTest
             _isDebugMode = isDebugMode;
         }
 
-        public void Run() => _fsm.SetState( typeof(LoadingFSMObject), DummyModel.Dummy );
+        public void Run() => _fsm.SetState( typeof(LoadingFSMObject), DummyDTO.Dummy );
+
+        public async UniTask InitializeAsync() => await _uiRootViewModel.InitializeAsync();
 
         public void Create()
         {
@@ -67,7 +69,7 @@ namespace StorageTest
             AddFSM();
             AddWindows();
         }
-        
+
         private void AddFSM()
         {
             _fsm.RegisterState( typeof(GameFSMObject),
@@ -76,9 +78,6 @@ namespace StorageTest
 
             _fsm.RegisterState( typeof(MainMenuFSMObject),
                 _ => new MainMenuFSMObject( _fsm, _startGameService, _messageBroker ) );
-
-            _fsm.RegisterState( typeof(WaitPlayersFSMObject),
-                _ => new WaitPlayersFSMObject( _fsm, _multiplayerService ) );
 
             _fsm.RegisterState( typeof(NetLobbyFSMObject),
                 _ => new NetLobbyFSMObject( _fsm, _messageBroker, _multiplayerService ) );
@@ -89,65 +88,51 @@ namespace StorageTest
                 _ => new HangarFSMObject( _fsm, _messageBroker, _scenesManager, _instanceUid ) );
         }
 
-        public async UniTask InitializeAsync()
-        {
-            await _uiRootViewModel.InitializeAsync();
-        }
-
         private void AddWindows()
         {
-            _uiManager.RegisterWindow( typeof(UIGameController),
-                () => new UIGameController( _uiRootAggregator, _gamePlayConfig ) );
-            
-            _uiManager.RegisterWindow( typeof(UIMainMenuController),
-                () => new UIMainMenuController( _uiRootAggregator, _userProfile ) );
-            
-            _uiManager.RegisterWindow( typeof(UILoadingController),
-                () => new UILoadingController( _uiRootAggregator ) );
-            
-            _uiManager.RegisterWindow( typeof(UIHangarController),
-                () => new UILoadingController( _uiRootAggregator ) );
-            
-            _uiManager.RegisterWindow( typeof(UINetLobbyController),
-                () => new UINetLobbyController( _uiRootAggregator, _multiplayerService ) );
+            _uiManager.RegisterWindow( typeof(UIGameViewModel),
+                () => new UIGameViewModel( _uiRootAggregator, _gamePlayConfig ) );
+
+            _uiManager.RegisterWindow( typeof(UIMainMenuViewModel),
+                () => new UIMainMenuViewModel( _uiRootAggregator, _userProfile ) );
+
+            _uiManager.RegisterWindow( typeof(UILoadingViewModel), () => new UILoadingViewModel( _uiRootAggregator ) );
+
+            _uiManager.RegisterWindow( typeof(UIHangarViewModel), () => new UIHangarViewModel( _uiRootAggregator ) );
+
+            _uiManager.RegisterWindow( typeof(UINetLobbyViewModel),
+                () => new UINetLobbyViewModel( _uiRootAggregator, _multiplayerService ) );
         }
-        
-        #if UNITY_EDITOR
+
+#if UNITY_EDITOR
 
         public void TestFSM()
         {
-            var types = Utils.GetDerivedTypes( typeof(BaseFiniteStateMachineObject) );
-            
-            types.ForEach(item=>
-            {
-                _fsm.SetState( item );
-            } );
+            Type[] types = Utils.GetDerivedTypes( typeof(BaseFiniteStateMachineObject) );
 
+            types.ForEach( item => { _fsm.SetState( item ); } );
         }
 
         public void TestUI()
         {
-            var types = Utils.GetDerivedTypes( typeof(BaseWindowDTO) );
-            
-            types.ForEach(item=>
-            {
-                var dto = Activator.CreateInstance( item );
-                _messageBroker.Publish( new UIOpenWindowMessage(dto as BaseWindowDTO ) );
-            } );
+            Type[] types = Utils.GetDerivedTypes( typeof(BaseWindowDTO) );
 
-            Debug.LogError( "[+] 1" );
-            Observable.Timer( System.TimeSpan.FromSeconds( 5 ) ).Distinct().Subscribe( _ =>
+            types.ForEach( item =>
             {
-                Debug.LogError( "[+] 2" );
-                
-                types.ForEach(item=>
+                object dto = Activator.CreateInstance( item );
+                _messageBroker.Publish( new UIOpenWindowMessage( dto as BaseWindowDTO ) );
+            } );
+           
+            Observable.Timer( TimeSpan.FromSeconds( 5 ) ).Distinct().Subscribe( _ =>
+            {
+                types.ForEach( item =>
                 {
-                    var dto = Activator.CreateInstance( item );
+                    object dto = Activator.CreateInstance( item );
                     _messageBroker.Publish( new UICloseWindowMessage( dto.GetType(), WindowResult.Back ) );
                 } );
             } );
         }
-        
-        #endif
+
+#endif
     }
 }

@@ -67,6 +67,7 @@ namespace Common.UI
             {
                 var view = await _resourcesProvider.LoadResourceAsync< GameObject >( baseDto.WindowName );
                 _baseView = Utils.Instantiate( view ).GetComponent< TView >();
+                
                 UIRoot uiRoot = GameObject.FindObjectsByType< UIRoot >( FindObjectsSortMode.None )
                     .FirstOrDefault( item => item.InsranceID == _uiRootAggregator.InstanceID );
 
